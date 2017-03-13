@@ -1,5 +1,5 @@
 ﻿$().ready(function () {
-
+    var beers = null;
     $("#getBeer").click(function () {
         var url = 'http://api.brewerydb.com/v2/beers';
         var key = 'd066193b962205c7958a875ed3aeba74';
@@ -7,9 +7,10 @@
         var searchUrl = url + '?' + 'name=*' + queryString + '*&key=' + key + '&withBreweries=Y';
         var data = {
             "withBreweries": "Y",
-            "withIngredients" : "Y"
+            "withIngredients": "Y"
         }
         $.get(searchUrl, data, function (resp) {
+            beers = resp.data;
             console.log(resp)
             showBeers(resp.data)
         });
@@ -19,30 +20,36 @@
         var ctrl = $("#beers")
         ctrl.empty();
         for (idx in beers) {
-            var title = beers[idx].name;
+            var name = beers[idx].name;
             var desc = beers[idx].description;
+            var abv = beers[idx].abv;
+            var ibu = beers[idx].ibu;
             //trl.append("<td>" + title + "</td><td>" + desc + "</td>")
             var style = beers[idx].style.name;
             var brewery = beers[idx].breweries[0].name
             var beerId = beers[idx].id
-            ctrl.append("<tr><td>" + title + "</td><td>" + desc + "</td><td>" + style + "</td><td>" + brewery + "</td><td><button id=beerId class='chooseBeer' >Choose</button></td></tr>");
-
-            $("&chooseBeer").click(function () {
-                var beer = 
-                $.ajax({
-                    data: MyPerson,
-                    url: $(this).attr('href'),
-                    type: 'POST',
-                    dataType: 'json' /* this really is optional */,
-                    success: function (response) {
-                        return true;
-                    },
-                    error: function ( error ) {
-                        return false;
-                    }
-                });
-        }
+            var beer = beers[idx]
+            ctrl.append("<tr><td>" + name + "</td><td>" + desc + "</td><td>" + style + "</td><td>" + brewery + "</td><td><button data-bIdx =" + idx + " class='chooseBeer'>Choose</button></td></tr>");
+            addBeers();
+            
+        };
     };
 
+    var addBeers = function () {
+    $(".chooseBeer").click(function () {
+        var idx = $(this).attr("data-bIdx");
+            //var jsonData = beers[idx];
+            var jsonData = JSON.stringify(beers[idx]);
+            console.log(jsonData);
+            $.ajax({
+                url: 'http://localhost:54414/Beer/AddBeer?=' ,
+                contentType: 'application/html; charset=utf-8',
+                dataType: "json",
+                type: 'POST',
+                data: jsonData
+
+            })
+        });
+    }
     
 });

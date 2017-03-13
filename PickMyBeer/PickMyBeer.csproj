@@ -233,6 +233,14 @@
     <Compile Include="Migrations\201703131412447_ck.Designer.cs">
       <DependentUpon>201703131412447_ck.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703132011366_ck2.cs" />
+    <Compile Include="Migrations\201703132011366_ck2.Designer.cs">
+      <DependentUpon>201703132011366_ck2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703132014481_userRolesFK.cs" />
+    <Compile Include="Migrations\201703132014481_userRolesFK.Designer.cs">
+      <DependentUpon>201703132014481_userRolesFK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bar.cs" />
@@ -337,6 +345,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703131412447_ck.resx">
       <DependentUpon>201703131412447_ck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703132011366_ck2.resx">
+      <DependentUpon>201703132011366_ck2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703132014481_userRolesFK.resx">
+      <DependentUpon>201703132014481_userRolesFK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

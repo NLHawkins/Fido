@@ -10,7 +10,9 @@ namespace PickMyBeer.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
-
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public ApplicationUser User { get; set; }
         public BeerCollection BeersOnTap { get; set; }
         public BeerCollection BeerCollection { get; set; }
 

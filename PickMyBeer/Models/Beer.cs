@@ -20,4 +20,9 @@ namespace PickMyBeer.Models
         public virtual Brewery Brewery { get; set; }
         public virtual Style Style { get; set; }
     }
+
+    public class ChooseBeerModel
+    {
+
+    }
 }
