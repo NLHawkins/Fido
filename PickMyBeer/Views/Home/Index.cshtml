@@ -15,13 +15,24 @@
 </head>
 <body>
     <div class="conatainer">
-        <div class="col-lg-9">
+        <div class="col-lg-12">
             <div class="row">
                 <h3>Search For A Beer By Its Name</h3>
                 <input type="text" id="beer" value="sweetgrass" />
-                <button id="getBeer">Get Beer</button>
+                <button id="searchBeersByName">Get Beers</button>
             </div>
-            <hr />
+            <hr/>
+            <div class="row text-center">
+                <div id="pagingControls">
+                    <button id="prevPage">Prev Page</button> || <button id="nextPage">Next Page</button>
+                </div> 
+            </div>
+            <div class="row text-center">
+                <div id="pgControls">
+                    <input type="text" id="page"/><button id="goToPage">Go To Page</button>
+                </div>
+            </div>
+            <hr/>      
             <div>
                 <table>
                     <thead>
@@ -30,16 +41,10 @@
                     <th>Style</th>
                     <th>Brewery</th>
                     </thead>
-                    <tbody id="beers">
-                        <tr>
-                            <td>
-                                <button id="pickBeer">Pick Beer</button>
-                            </td>
-                        </tr>
+                    <tbody id="searchBeers">
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
 </body>
 </html>

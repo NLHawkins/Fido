@@ -28,9 +28,8 @@ namespace PickMyBeer.Models
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Style> Styles { get; set; }
         public DbSet<Brewery> Breweries { get; set; }
-        public DbSet<Bar> Bars { get; set; }
-        public DbSet<Patron> Patrons { get; set; }
-
+        public DbSet<PatronClient> PatronClients { get; set; }
+        public DbSet<BarClient> BarClients { get; set; }
 
 
 

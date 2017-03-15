@@ -15,6 +15,8 @@ namespace PickMyBeer.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -152,9 +154,47 @@ namespace PickMyBeer.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                if (model.BarClient == true)
+                {
+                    user.UserRole = "BarClient";
+                }
+                else
+                {
+                    user.UserRole = "PatronClient";
+                }
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    if(user.UserRole == "PatronClient")
+                    {
+                        var p = new PatronClient();
+                        p.UserId = user.Id;
+                        p.UserName = user.UserName;
+                        db.PatronClients.Add(p);
+                        try
+                        {
+                            db.SaveChanges();
+                        } catch (Exception ex)
+                        {
+                            var ex1 = ex;
+                        }
+                    }
+                    if(user.UserRole == "BarClient")
+                    {
+                        var bar = new BarClient();
+                        bar.UserId = user.Id;
+                        bar.UserName = user.UserName;
+                        db.BarClients.Add(bar);
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            var ex1 = ex;
+                        }
+                    }
+                    
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

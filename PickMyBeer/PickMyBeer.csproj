@@ -207,6 +207,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BeerController.cs" />
+    <Compile Include="Controllers\BeersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Extensions\Extensions.cs" />
@@ -241,17 +242,49 @@
     <Compile Include="Migrations\201703132014481_userRolesFK.Designer.cs">
       <DependentUpon>201703132014481_userRolesFK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703141310072_ck3.cs" />
+    <Compile Include="Migrations\201703141310072_ck3.Designer.cs">
+      <DependentUpon>201703141310072_ck3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703141821296_usermodels.cs" />
+    <Compile Include="Migrations\201703141821296_usermodels.Designer.cs">
+      <DependentUpon>201703141821296_usermodels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703141841482_idtointonusers.cs" />
+    <Compile Include="Migrations\201703141841482_idtointonusers.Designer.cs">
+      <DependentUpon>201703141841482_idtointonusers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703141906587_pickermodelck.cs" />
+    <Compile Include="Migrations\201703141906587_pickermodelck.Designer.cs">
+      <DependentUpon>201703141906587_pickermodelck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703141908323_pickermodel.cs" />
+    <Compile Include="Migrations\201703141908323_pickermodel.Designer.cs">
+      <DependentUpon>201703141908323_pickermodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703141953365_ck1.cs" />
+    <Compile Include="Migrations\201703141953365_ck1.Designer.cs">
+      <DependentUpon>201703141953365_ck1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703142004081_ck4.cs" />
+    <Compile Include="Migrations\201703142004081_ck4.Designer.cs">
+      <DependentUpon>201703142004081_ck4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703142006365_excludeAppUser.cs" />
+    <Compile Include="Migrations\201703142006365_excludeAppUser.Designer.cs">
+      <DependentUpon>201703142006365_excludeAppUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Bar.cs" />
+    <Compile Include="Models\BarClient.cs" />
     <Compile Include="Models\Beer.cs" />
     <Compile Include="Models\Collections.cs" />
     <Compile Include="Models\Brewery.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ImageUpload.cs" />
     <Compile Include="Models\Ingredient.cs" />
-    <Compile Include="Models\Patron.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PatronClient.cs" />
     <Compile Include="Models\Style.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -282,6 +315,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\FindAndAddBeers.html" />
+    <Content Include="Views\HtmlPage1.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -351,6 +385,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703132014481_userRolesFK.resx">
       <DependentUpon>201703132014481_userRolesFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703141310072_ck3.resx">
+      <DependentUpon>201703141310072_ck3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703141821296_usermodels.resx">
+      <DependentUpon>201703141821296_usermodels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703141841482_idtointonusers.resx">
+      <DependentUpon>201703141841482_idtointonusers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703141906587_pickermodelck.resx">
+      <DependentUpon>201703141906587_pickermodelck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703141908323_pickermodel.resx">
+      <DependentUpon>201703141908323_pickermodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703141953365_ck1.resx">
+      <DependentUpon>201703141953365_ck1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703142004081_ck4.resx">
+      <DependentUpon>201703142004081_ck4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703142006365_excludeAppUser.resx">
+      <DependentUpon>201703142006365_excludeAppUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
