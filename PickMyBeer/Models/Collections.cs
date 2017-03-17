@@ -5,19 +5,11 @@ using System.Web;
 
 namespace PickMyBeer.Models
 {
-    public class BeerCollection : Dictionary<int, Beer>
+    public class BeerCollection : List<Beer>
     {
-        public void Add(Beer beer)
-        {
-            this.Add(beer.Id, beer);
-        }
     }
 
-    public class IngredientCollection : Dictionary<int, Ingredient>
+    public class IngredientCollection : List<Ingredient>
     {
-        public void Add(Ingredient ingredient)
-        {
-            this.Add(ingredient.Id, ingredient);
-        }
     }
 }

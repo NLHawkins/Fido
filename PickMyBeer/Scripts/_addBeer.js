@@ -4,39 +4,21 @@
     var beers = null;
     var page = 0;
     var maxPage = 0;
-    var url = 'http://api.brewerydb.com/v2/beers';
+    var url = 'http://api.brewerydb.com/v2/search';
     var key = 'd066193b962205c7958a875ed3aeba74';
 
     //***Get Beers Initial Search
-    $("#getBeersByName").click(function () {
-        page = 1;
-        var queryString = $("#beer").val()
-        var searchUrl = url + '?' + 'name=*' + queryString + '*&key=' + key + '&p=' + page;
-        console.log(searchUrl);
-        var data = {
-            "withBreweries": "Y",
-            "withIngredients": "Y",
-        }
-        $.get(searchUrl, data, function (resp) {
-            beers = resp.data;
-            page = resp.currentPage;
-            maxPage = resp.numberOfPages
-            console.log(resp)
-            showSBeers(resp.data)
-        });
-
-    });
 
     $("#searchBeersByName").click(function () {
         page = 1;
-        var queryString = $("#beer").val()
+        var queryString = $("#beerN").val()
         var url = 'http://api.brewerydb.com/v2/search';
         var searchUrl = url + '?' + 'q=' + queryString + '&key=' + key + '&p=' + page + '&type=beer';
         console.log(searchUrl);
         var data = {
             "withBreweries": "Y",
             "withIngredients": "Y",
-            
+
         }
         $.get(searchUrl, data, function (resp) {
             beers = resp.data;
@@ -51,8 +33,8 @@
     $("#nextPage").click(function () {
         if (page < maxPage) {
             page++;
-            var queryString = $("#beer").val()
-            var searchUrl = url + '?' + 'name=*' + queryString + '*&key=' + key + '&p=' + page;
+            var queryString = $("#beerN").val();
+            var searchUrl = url + '?' + 'q=' + queryString + '&key=' + key + '&p=' + page + '&type=beer';
             console.log(searchUrl);
             var data = {
                 "withBreweries": "Y",
@@ -67,14 +49,14 @@
         else {
             alert("Next Page does not exsist")
         }
-        
+
     });
 
     $("#prevPage").click(function () {
         if (page > 1) {
             page--;
-            var queryString = $("#beer").val()
-            var searchUrl = url + '?' + 'name=*' + queryString + '*&key=' + key + '&p=' + page;
+            var queryString = $("#beerN").val()
+            var searchUrl = url + '?' + 'q=' + queryString + '&key=' + key + '&p=' + page + '&type=beer';
             console.log(searchUrl);
             var data = {
                 "withBreweries": "Y",
@@ -89,13 +71,13 @@
         else {
             alert("There is no Previous Page")
         }
-        
+
     });
 
     $("#goToPage").click(function () {
-        var queryString = $("#beer").val();
+        var queryString = $("#beerN").val();
         page = $("#page").val();
-        var searchUrl = url + '?' + 'name=*' + queryString + '*&key=' + key + '&p=' + page;
+        var searchUrl = url + '?' + 'q=' + queryString + '&key=' + key + '&p=' + page + '&type=beer';
         console.log(searchUrl);
         var data = {
             "withBreweries": "Y",
@@ -120,7 +102,7 @@
             if (beers[idx].style !== undefined) {
                 style = beers[idx].style.name;
             } else {
-                style="n/a"
+                style = "n/a"
             }
 
             var brewery = "";
@@ -132,20 +114,24 @@
 
             var beerId = beers[idx].id
             var beer = beers[idx]
-            ctrl.append("<tr><td>" + name + "</td><td>" + desc + "</td><td>" + style + "</td><td>" + brewery + "</td><td><button data-bIdx =" + idx + " class='chooseBeer'>Choose</button></td></tr>");
-            addBeers();
-            
-        };
-    };
+            if (userRole == "BarClient") {
 
-    var addBeers = function () {
-    $(".chooseBeer").click(function () {
-        var idx = $(this).attr("data-bIdx");
+                ctrl.append("<tr><td>" + name + "</td><td>" + desc + "</td><td>" + style + "</td><td>" + brewery + "</td><td><button data-bIdx =" + idx + " class='chooseBeerTap'>Choose</button></td></tr>");
+            }
+            else {
+                ctrl.append("<tr><td>" + name + "</td><td>" + desc + "</td><td>" + style + "</td><td>" + brewery + "</td><td><button data-bIdx =" + idx + " class='chooseBeer'>Choose</button></td></tr>");
+
+            }
+        };
+
+        $(".chooseBeer").click(function () {
+            var idx = $(this).attr("data-bIdx");
             //var jsonData = beers[idx];
             var jsonData = JSON.stringify(beers[idx]);
-            console.log(jsonData);
+            //console.log(jsonData);
+            console.log("*********Added Beer*************")
             $.ajax({
-                url: 'http://localhost:54414/Beer/AddBeer?=' ,
+                url: 'http://localhost:54414/Beer/AddBeerToArchive?=',
                 contentType: 'application/html; charset=utf-8',
                 dataType: "json",
                 type: 'POST',
@@ -153,6 +139,5 @@
 
             })
         });
-    }
-    
+    };
 });

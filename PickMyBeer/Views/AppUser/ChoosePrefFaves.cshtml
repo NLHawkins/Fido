@@ -1,0 +1,24 @@
+﻿@model PickMyBeer.Models.ChoosePrefFavesViewModel
+
+@{
+    ViewBag.Title = "ChoosePrefFaves";
+}
+
+@using (Html.BeginForm("PrefPickedFave", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="container">
+    <div class="row">
+        <div class="form-group">
+            <h2>Choose from one of your faves</h2>
+            <div class="col-md-6">
+                @Html.DropDownListFor(m => m.SelectedBeerId, Model.Beers, new { htmlAttributes = new { @class = "form-control text-box single-line" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <input type="submit" value="Choose" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+</div>
+}

@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "AddBeerToFaves";
+}
+
+<h2>Choose A Beer To Add To Your Favorites</h2>
+<head>
+    <script src="http://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="~/Scripts/_addBeer.js">
+    </script>
+    <style>
+        table, tr, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <div class="conatainer">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Search For A Beer By Its Name</h3>
+                    <input type="text" id="beerN"/>
+                    <button id="searchBeersByName">Search</button>
+                </div>
+                <div class="col-lg-6">
+                    <h3>Search For A Beer By The Brewery</h3>
+                    <input type="text" id="beerB"/>
+                    <button id="searchBeersByBrewery">Search</button>
+                </div>     
+            </div>
+            <hr />
+            <div class="row">
+                <div id="pagingControls">
+                    <div class="col-lg-8">
+                        <button id="prevPage">Prev Page</button> || <button id="nextPage">Next Page</button>
+                    </div>
+                    <div class="col-lg-4">
+                        <input type="text" id="page" /> <button id="goToPage">Go To Page</button>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <hr />
+            <div>
+                <table>
+                    <thead>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Style</th>
+                    <th>Brewery</th>
+                    </thead>
+                    <tbody id="searchBeers"></tbody>
+                </table>
+            </div>
+            <hr/>
+            <div class="row">
+                <div id="pagingControls">
+                    <div class="col-lg-8">
+                        <button id="prevPage">Prev Page</button> || <button id="nextPage">Next Page</button>
+                    </div>
+                    <div class="col-lg-4">
+                        <input type="text" id="page" /> <button id="goToPage">Go To Page</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
+

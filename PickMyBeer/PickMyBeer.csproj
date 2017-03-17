@@ -206,10 +206,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BarUserController.cs" />
     <Compile Include="Controllers\BeerController.cs" />
     <Compile Include="Controllers\BeersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\AppUserController.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -274,17 +276,81 @@
     <Compile Include="Migrations\201703142006365_excludeAppUser.Designer.cs">
       <DependentUpon>201703142006365_excludeAppUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703151927418_m2ms.cs" />
+    <Compile Include="Migrations\201703151927418_m2ms.Designer.cs">
+      <DependentUpon>201703151927418_m2ms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703151932556_igLogs.cs" />
+    <Compile Include="Migrations\201703151932556_igLogs.Designer.cs">
+      <DependentUpon>201703151932556_igLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703152032355_new.cs" />
+    <Compile Include="Migrations\201703152032355_new.Designer.cs">
+      <DependentUpon>201703152032355_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703152033255_ck6.cs" />
+    <Compile Include="Migrations\201703152033255_ck6.Designer.cs">
+      <DependentUpon>201703152033255_ck6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703152114227_ck9.cs" />
+    <Compile Include="Migrations\201703152114227_ck9.Designer.cs">
+      <DependentUpon>201703152114227_ck9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703152117155_icolls.cs" />
+    <Compile Include="Migrations\201703152117155_icolls.Designer.cs">
+      <DependentUpon>201703152117155_icolls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703152125463_iclagain4.cs" />
+    <Compile Include="Migrations\201703152125463_iclagain4.Designer.cs">
+      <DependentUpon>201703152125463_iclagain4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703152150261_aiaeneasdf.cs" />
+    <Compile Include="Migrations\201703152150261_aiaeneasdf.Designer.cs">
+      <DependentUpon>201703152150261_aiaeneasdf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703160120244_asdflasf.cs" />
+    <Compile Include="Migrations\201703160120244_asdflasf.Designer.cs">
+      <DependentUpon>201703160120244_asdflasf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703161557239_bc2barclient.cs" />
+    <Compile Include="Migrations\201703161557239_bc2barclient.Designer.cs">
+      <DependentUpon>201703161557239_bc2barclient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703161611339_asdfasfiwnef.cs" />
+    <Compile Include="Migrations\201703161611339_asdfasfiwnef.Designer.cs">
+      <DependentUpon>201703161611339_asdfasfiwnef.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703162041020_popBeeradded.cs" />
+    <Compile Include="Migrations\201703162041020_popBeeradded.Designer.cs">
+      <DependentUpon>201703162041020_popBeeradded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703170256026_asdfinawfoiw.cs" />
+    <Compile Include="Migrations\201703170256026_asdfinawfoiw.Designer.cs">
+      <DependentUpon>201703170256026_asdfinawfoiw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703170344070_asdfljawie.cs" />
+    <Compile Include="Migrations\201703170344070_asdfljawie.Designer.cs">
+      <DependentUpon>201703170344070_asdfljawie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AppUserViewModels.cs" />
     <Compile Include="Models\BarClient.cs" />
     <Compile Include="Models\Beer.cs" />
+    <Compile Include="Models\BeerArchive.cs" />
+    <Compile Include="Models\BeerOnTap.cs" />
     <Compile Include="Models\Collections.cs" />
     <Compile Include="Models\Brewery.cs" />
+    <Compile Include="Models\FaveBeer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ImageUpload.cs" />
     <Compile Include="Models\Ingredient.cs" />
+    <Compile Include="Models\IngredientLog.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Match.cs" />
     <Compile Include="Models\PatronClient.cs" />
+    <Compile Include="Models\PopBeer.cs" />
+    <Compile Include="Models\PrevSearchedBeer.cs" />
     <Compile Include="Models\Style.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -296,6 +362,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_addBeerOnTap.js" />
     <Content Include="Scripts\_addBeer.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -313,6 +380,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_AddPrefNew.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\FindAndAddBeers.html" />
     <Content Include="Views\HtmlPage1.html" />
@@ -350,11 +418,20 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\AppUser\Index.cshtml" />
+    <Content Include="Views\AppUser\AddBeerToFaves.cshtml" />
+    <Content Include="Views\Beer\Details.cshtml" />
+    <Content Include="Views\BarUser\Index.cshtml" />
+    <Content Include="Views\AppUser\ChoosePrefFaves.cshtml" />
+    <Content Include="Views\AppUser\ChoosePrefPops.cshtml" />
+    <Content Include="Views\AppUser\ChoosePrefNew.cshtml" />
+    <Content Include="Views\Home\PrefPicked.cshtml" />
+    <Content Include="Views\Beer\MatchPage.cshtml" />
+    <Content Include="Views\Home\ChooseLoc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
-    <Folder Include="Views\Beer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -409,6 +486,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703142006365_excludeAppUser.resx">
       <DependentUpon>201703142006365_excludeAppUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703151927418_m2ms.resx">
+      <DependentUpon>201703151927418_m2ms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703151932556_igLogs.resx">
+      <DependentUpon>201703151932556_igLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703152032355_new.resx">
+      <DependentUpon>201703152032355_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703152033255_ck6.resx">
+      <DependentUpon>201703152033255_ck6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703152114227_ck9.resx">
+      <DependentUpon>201703152114227_ck9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703152117155_icolls.resx">
+      <DependentUpon>201703152117155_icolls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703152125463_iclagain4.resx">
+      <DependentUpon>201703152125463_iclagain4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703152150261_aiaeneasdf.resx">
+      <DependentUpon>201703152150261_aiaeneasdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703160120244_asdflasf.resx">
+      <DependentUpon>201703160120244_asdflasf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703161557239_bc2barclient.resx">
+      <DependentUpon>201703161557239_bc2barclient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703161611339_asdfasfiwnef.resx">
+      <DependentUpon>201703161611339_asdfasfiwnef.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703162041020_popBeeradded.resx">
+      <DependentUpon>201703162041020_popBeeradded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703170256026_asdfinawfoiw.resx">
+      <DependentUpon>201703170256026_asdfinawfoiw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703170344070_asdfljawie.resx">
+      <DependentUpon>201703170344070_asdfljawie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

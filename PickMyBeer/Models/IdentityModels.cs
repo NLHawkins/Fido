@@ -30,7 +30,13 @@ namespace PickMyBeer.Models
         public DbSet<Brewery> Breweries { get; set; }
         public DbSet<PatronClient> PatronClients { get; set; }
         public DbSet<BarClient> BarClients { get; set; }
-
+        public DbSet<PrevSearchedBeer> PrevSearchedBeers { get; set; }
+        public DbSet<FaveBeer> FaveBeers { get; set; }
+        public DbSet<BeerOnTap> BeerOnTaps { get; set; }
+        public DbSet<BeerArchive> BeerArchives { get; set; }
+        public DbSet<IngredientLog> IngredientLogs { get; set; }
+        public DbSet<PopBeer> PopBeers { get; set; }
+        public DbSet<Match> Matches { get; set; }
 
 
         public ApplicationDbContext()

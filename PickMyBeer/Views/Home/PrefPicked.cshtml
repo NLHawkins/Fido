@@ -1,0 +1,49 @@
+﻿<h2>Beer Details</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 text-center">
+            <h2>
+                <img class="thumb" src="@Model.LabelURL" />
+            </h2>
+        </div>
+        <div class="col-lg-8">
+            <div class="text-center">
+                <h2>
+                    @Model.Name
+                </h2>
+            </div>
+            <div class="text-center">
+                <h2>
+                    @Model.Style.Name
+                </h2>
+            </div>
+            <div class="text-center">
+                @Model.Brewery.Name
+            </div>
+            <div class="text-center">
+                @Model.Brewery.City, @Model.Brewery.State
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-8">
+        <h4>
+            @Model.Description
+        </h4>
+    </div>
+    <div class="col-lg-4 text-center">
+        <div class="text-center">
+            @Html.ActionLink("Yep, Pick My Beer!", "ChooseLoc", new { beerId = ViewBag.BeerId })
+        </div>
+        <br/>
+        <div class="text-center">
+            @Html.ActionLink("Nope, Let Me Choose Another", "ChoosePrefNew", "AppUser")
+        </div>
+        <br />
+        <div class="text-center">
+            @Html.ActionLink("Home", "Index")
+        </div>
+    </div>
+</div>
