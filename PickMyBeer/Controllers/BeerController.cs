@@ -18,7 +18,12 @@ namespace PickMyBeer.Controllers
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
-
+        public ActionResult AddBeerToFaves()
+        {
+            Beer beer = AddBeer();
+            AddFaveBeer(beer);
+            return Json("{\"result\":\"ok\"}", JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult AddBeerToTap()
         {
@@ -109,11 +114,6 @@ namespace PickMyBeer.Controllers
             ab.OnTap = onTap;
             db.BeerArchives.Add(ab);
             db.SaveChanges();
-        }
-
-        public void AddBeerToFavesCollection()
-        {
-            AddBeer();
         }
 
         public ActionResult PrefPickAdd()

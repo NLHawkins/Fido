@@ -105,18 +105,24 @@ namespace PickMyBeer.Controllers
         public ActionResult PickMyBeer(int beerId, int barId)
         {
             Beer prefBeer = db.Beers.Where(b => b.Id == beerId).FirstOrDefault();
-            var bots = db.BeerOnTaps.Where(b => b.Id == barId).ToList();
-            var bsOT = new List<Beer>();
+            var bots = db.BeerOnTaps.Where(b => b.BarClientId == barId).ToList();
+            var availBeers = new List<Beer>();
             foreach (var item in bots)
             {
                 Beer b = db.Beers.Where(c => c.Id == item.BeerId).FirstOrDefault();
-                bsOT.Add(b);
+                availBeers.Add(b);
+            }
+            var bips = db.BeerInPkgs.Where(b => b.BarClientId == barId).ToList();
+            foreach (var item in bips)
+            {
+                Beer b = db.Beers.Where(c => c.Id == item.BeerId).FirstOrDefault();
+                availBeers.Add(b);
             }
             DateTime t = DateTime.Now;
             //add style matches
             if (prefBeer.Style.Name != null)
             {
-                var sMs = bsOT.Where(b => b.StyleId == prefBeer.StyleId);
+                var sMs = availBeers.Where(b => b.StyleId == prefBeer.StyleId);
                 foreach (var item in sMs)
                 {
                     var match = new Match();
@@ -131,7 +137,7 @@ namespace PickMyBeer.Controllers
             if (prefBeer.BreweryId != 0)
             {
 
-                var bMs = bsOT.Where(b => b.BreweryId == prefBeer.BreweryId);
+                var bMs = availBeers.Where(b => b.BreweryId == prefBeer.BreweryId);
                 foreach (var item in bMs)
                 {
                     List<Match> r = GetRepeats(item.Id, t);
@@ -155,7 +161,7 @@ namespace PickMyBeer.Controllers
             {
                 var ibuMin = prefBeer.IBU - 15;
                 var ibuMax = prefBeer.IBU + 15;
-                var iMs = bsOT.Where(b => b.IBU >= ibuMin && b.IBU <= ibuMax);
+                var iMs = availBeers.Where(b => b.IBU >= ibuMin && b.IBU <= ibuMax);
                 foreach (var item in iMs)
                 {
                     List<Match> r = GetRepeats(item.Id, t);
@@ -178,13 +184,12 @@ namespace PickMyBeer.Controllers
                 }
             }
             db.SaveChanges();
-            var allMList = db.Matches.Where(m => m.PrefBeerId == prefBeer.Id && m.TimeStamp == t).OrderByDescending(s => s.Score);
+            var allMList = db.Matches.Where(m => m.MatchBeerId == prefBeer.Id && m.TimeStamp == t).OrderByDescending(s => s.Score);
             var winners = allMList.Take(3).OrderByDescending(s => s.Score).ToList();
             return RedirectToAction("MatchPage", "Home", new { wList = winners });
         }
         public List<Match> GetRepeats(int mbId, DateTime timestamp)
         {
-
             var ms = db.Matches.Where(m => m.MatchBeerId == mbId && m.TimeStamp == timestamp).ToList();
             return ms;
         }

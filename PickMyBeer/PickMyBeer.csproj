@@ -474,6 +474,7 @@
     <Content Include="Views\Shared\_LoadingPartial.cshtml" />
     <Content Include="Views\BarUser\AddBeerInPkg.cshtml" />
     <Content Include="Views\BarUser\AddBeerOnTap.cshtml" />
+    <Content Include="Views\AppUser\ChoosePref.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

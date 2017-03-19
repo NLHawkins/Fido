@@ -5,7 +5,7 @@
     {
         @Html.AntiForgeryToken()
 
-        if (User.Identity.GetUserRole() == "Patron")
+        if (User.Identity.GetUserRole() == "PatronClient")
         {
             <ul class="nav navbar-nav navbar-right">
                 <li>

@@ -114,15 +114,16 @@
 
             var beerId = beers[idx].id
             var beer = beers[idx]
-            if (userRole == "BarClient") {
-
-                ctrl.append("<tr><td>" + name + "</td><td>" + desc + "</td><td>" + style + "</td><td>" + brewery + "</td><td><button data-bIdx =" + idx + " class='chooseBeerTap'>Choose</button></td></tr>");
-            }
-            else {
                 ctrl.append("<tr><td>" + name + "</td><td>" + desc + "</td><td>" + style + "</td><td>" + brewery + "</td><td><button data-bIdx =" + idx + " class='chooseBeer'>Choose</button></td></tr>");
 
-            }
+            
         };
+
+        $body = $("body");
+        $(document).on({
+            ajaxStart: function () { $body.addClass("loading"); },
+            ajaxStop: function () { $body.removeClass("loading"); }
+        });
 
         $(".chooseBeer").click(function () {
             var idx = $(this).attr("data-bIdx");
@@ -131,12 +132,14 @@
             //console.log(jsonData);
             console.log("*********Added Beer*************")
             $.ajax({
-                url: 'http://localhost:54414/Beer/AddBeerToArchive?=',
+                url: 'http://localhost:54414/Beer/AddBeerToFaves',
                 contentType: 'application/html; charset=utf-8',
                 dataType: "json",
                 type: 'POST',
                 data: jsonData
 
+            }).done(function () {
+                window.location.replace("http://localhost:54414/AppUser/MyProfile");
             })
         });
     };

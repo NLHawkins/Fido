@@ -32,6 +32,10 @@ namespace PickMyBeer.Controllers
         {
             return View();
         }
+        public ActionResult ChoosePref()
+        {
+            return View();
+        }
         [Authorize]
         public ActionResult MyProfile()
         {

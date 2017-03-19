@@ -17,11 +17,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("PickMyBeer", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @if (User.Identity.GetUserRole() == "BarClient")
+                {
+                    @Html.ActionLink("PickMyBeer", "ReviewMatches", "BarUser", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                else if (User.Identity.GetUserRole() == "PatronClient")
+                {
+                    @Html.ActionLink("PickMyBeer", "ChoosePref", "AppUser", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                else
+                {
+                    @Html.ActionLink("PickMyBeer", "ChoosePref", "AppUser", new { area = "" }, new { @class = "navbar-brand" })
+                }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Bars", "Index", "Bar")</li>
+                    @if (User.Identity.GetUserRole() == "BarClient")
+                    {
+                        <li>@Html.ActionLink("My Bar Profile", "Index", "BarUser")</li>
+                        <li>@Html.ActionLink("Manage My Beers", "ManageBeers", "BarUser")</li>
+                        <li>@Html.ActionLink("Review Matches", "ReviewMatches", "BarUser")</li>
+                    }
+                    else if (User.Identity.GetUserRole() == "PatronClient")
+                    {
+                        <li>@Html.ActionLink("My Profile", "Index", "AppUser")</li>
+                        <li>@Html.ActionLink("My Beers", "ManageBeers", "AppUser")</li>
+                        <li>@Html.ActionLink("Explore Bars", "BeersOnTap", "AppUser")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
