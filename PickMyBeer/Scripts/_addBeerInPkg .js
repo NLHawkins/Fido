@@ -105,6 +105,14 @@
             showSBeers(resp.data)
         });
     });
+
+    var getBeersInPkgs = function () {
+        var id = $(".bcid").val()
+        $.get('http://localhost:54414/BarUser/GetBeerInPkgs?barClientId=' + id, function (resp) {
+            console.log(resp)
+            showBeersInPkgs(resp)
+        });
+    }
     var showSBeers = function (beers) {
         var ctrl = $("#searchBeers")
         ctrl.empty();
@@ -144,15 +152,13 @@
         //************************************************************************
 
         $(".chooseTapBeer").click(function () {
-            $("div#divLoading").addClass('show');
             var idx = $(this).attr("data-bIdx");
             //var jsonData = beers[idx];
             var jsonData = JSON.stringify(beers[idx]);
             //console.log(jsonData);
-            alert(beer[idx].name + 'added')
             console.log("*********Added Beer*************")
             $.ajax({
-                url: 'http://localhost:54414/Beer/AddBeerToTap',
+                url: 'http://localhost:54414/Beer/AddBeerInPkg',
                 contentType: 'application/html; charset=utf-8',
                 dataType: "json",
                 type: 'POST',
@@ -160,9 +166,8 @@
 
             }).done(function () {
                 console.log("getting beers")
-                getBeersOnTap();
+                getBeersInPkgs();
             })
-            $("div#divLoading").removeClass('show');
         });
 
         $(".deleteTapBeer").click(function () {
