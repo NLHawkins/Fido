@@ -23,6 +23,6 @@ namespace PickMyBeer.Models
         public int? SelectedBarId { get; set; }
         public IEnumerable<SelectListItem> Bars { get; set; }
         public int? BeerId { get; set; }
-
     }
+
 }

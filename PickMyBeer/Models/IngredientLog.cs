@@ -11,6 +11,9 @@ namespace PickMyBeer.Models
         public int Id { get; set; }
         public int IngredientId { get; set; }
         public int BeerId { get; set; }
-
+        [ForeignKey("BeerId")]
+        public virtual Beer Beer { get; set; }
+        [ForeignKey("IngredientId")]
+        public virtual Ingredient Ingredient { get; set; }
     }
 }

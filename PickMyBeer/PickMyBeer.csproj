@@ -332,12 +332,49 @@
     <Compile Include="Migrations\201703170344070_asdfljawie.Designer.cs">
       <DependentUpon>201703170344070_asdfljawie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703171816045_prevpickedbeer.cs" />
+    <Compile Include="Migrations\201703171816045_prevpickedbeer.Designer.cs">
+      <DependentUpon>201703171816045_prevpickedbeer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703171836070_ckitout.cs" />
+    <Compile Include="Migrations\201703171836070_ckitout.Designer.cs">
+      <DependentUpon>201703171836070_ckitout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703181839064_ck5.cs" />
+    <Compile Include="Migrations\201703181839064_ck5.Designer.cs">
+      <DependentUpon>201703181839064_ck5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703182025587_beeringredients.cs" />
+    <Compile Include="Migrations\201703182025587_beeringredients.Designer.cs">
+      <DependentUpon>201703182025587_beeringredients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703182029090_ck7.cs" />
+    <Compile Include="Migrations\201703182029090_ck7.Designer.cs">
+      <DependentUpon>201703182029090_ck7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703182323028_beerinpkg.cs" />
+    <Compile Include="Migrations\201703182323028_beerinpkg.Designer.cs">
+      <DependentUpon>201703182323028_beerinpkg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703182325576_beerinpkgs.cs" />
+    <Compile Include="Migrations\201703182325576_beerinpkgs.Designer.cs">
+      <DependentUpon>201703182325576_beerinpkgs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703182338596_ck8.cs" />
+    <Compile Include="Migrations\201703182338596_ck8.Designer.cs">
+      <DependentUpon>201703182338596_ck8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703190029375_next.cs" />
+    <Compile Include="Migrations\201703190029375_next.Designer.cs">
+      <DependentUpon>201703190029375_next.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppUserViewModels.cs" />
     <Compile Include="Models\BarClient.cs" />
     <Compile Include="Models\Beer.cs" />
     <Compile Include="Models\BeerArchive.cs" />
+    <Compile Include="Models\BeerInPkg.cs" />
     <Compile Include="Models\BeerOnTap.cs" />
     <Compile Include="Models\Collections.cs" />
     <Compile Include="Models\Brewery.cs" />
@@ -350,7 +387,7 @@
     <Compile Include="Models\Match.cs" />
     <Compile Include="Models\PatronClient.cs" />
     <Compile Include="Models\PopBeer.cs" />
-    <Compile Include="Models\PrevSearchedBeer.cs" />
+    <Compile Include="Models\PrevPickedBeer.cs" />
     <Compile Include="Models\Style.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -362,6 +399,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\JavaScript.js" />
+    <Content Include="Scripts\_addBeerInPkg .js" />
     <Content Include="Scripts\_addBeerOnTap.js" />
     <Content Include="Scripts\_addBeer.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -382,6 +421,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_AddPrefNew.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Uploads\OrangeLoadinG.gif" />
     <Content Include="Views\FindAndAddBeers.html" />
     <Content Include="Views\HtmlPage1.html" />
     <Content Include="Web.config" />
@@ -428,10 +468,15 @@
     <Content Include="Views\Home\PrefPicked.cshtml" />
     <Content Include="Views\Beer\MatchPage.cshtml" />
     <Content Include="Views\Home\ChooseLoc.cshtml" />
+    <Content Include="Views\AppUser\MyProfile.cshtml" />
+    <Content Include="Views\AppUser\MyFaves.cshtml" />
+    <Content Include="Views\AppUser\MyPrevs.cshtml" />
+    <Content Include="Views\Shared\_LoadingPartial.cshtml" />
+    <Content Include="Views\BarUser\AddBeerInPkg.cshtml" />
+    <Content Include="Views\BarUser\AddBeerOnTap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -528,6 +573,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703170344070_asdfljawie.resx">
       <DependentUpon>201703170344070_asdfljawie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703171816045_prevpickedbeer.resx">
+      <DependentUpon>201703171816045_prevpickedbeer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703171836070_ckitout.resx">
+      <DependentUpon>201703171836070_ckitout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703181839064_ck5.resx">
+      <DependentUpon>201703181839064_ck5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703182025587_beeringredients.resx">
+      <DependentUpon>201703182025587_beeringredients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703182029090_ck7.resx">
+      <DependentUpon>201703182029090_ck7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703182323028_beerinpkg.resx">
+      <DependentUpon>201703182323028_beerinpkg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703182325576_beerinpkgs.resx">
+      <DependentUpon>201703182325576_beerinpkgs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703182338596_ck8.resx">
+      <DependentUpon>201703182338596_ck8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703190029375_next.resx">
+      <DependentUpon>201703190029375_next.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

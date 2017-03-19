@@ -15,16 +15,11 @@ namespace PickMyBeer.Models
         public float IBU { get; set; }
         public int StyleId { get; set; }
         public int BreweryId { get; set; }
-        public virtual ICollection<Ingredient> Ingredients { get; set; }
         public string LabelURL { get; set; }
+        public string BrewDbId { get; set; }
 
         public virtual Brewery Brewery { get; set; }
         public virtual Style Style { get; set; }
-
-        public Beer()
-        {
-            Ingredients = new IngredientCollection(); 
-        }
     }
 
     public class BeerDetailsViewModel

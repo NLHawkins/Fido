@@ -22,3 +22,57 @@ select,
 textarea {
     max-width: 280px;
 }
+.loadingModal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('/Uploads/OrangeLoadinG.gif') 
+                50% 50% 
+                no-repeat;
+}
+body.loading {
+    overflow: hidden;   
+}
+
+body.loading .loadingModal {
+    display: block;
+}
+#divLoading
+{
+display : none;
+}
+#divLoading.show
+{
+display : block;
+position : fixed;
+z-index: 100;
+background-image : url('/Uploads/OrangeLoadinG.gif');
+background-color:#3368FF;
+opacity : 0.4;
+background-repeat : no-repeat;
+background-position : center;
+left : 0;
+bottom : 0;
+right : 0;
+top : 0;
+}
+#loadinggif.show
+{
+left : 50%;
+top : 50%;
+position : absolute;
+z-index : 101;
+width : 32px;
+height : 32px;
+margin-left : -16px;
+margin-top : -16px;
+}
+div.content {
+width : 1000px;
+height : 1000px;
+}

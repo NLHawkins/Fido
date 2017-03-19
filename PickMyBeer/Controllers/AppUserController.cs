@@ -32,6 +32,37 @@ namespace PickMyBeer.Controllers
         {
             return View();
         }
+        [Authorize]
+        public ActionResult MyProfile()
+        {
+            if (User.Identity.GetUserId() == null)
+            {
+                return RedirectToAction("Login", "Account", new { returnUrl = 'a' });
+            }
+            var pc = GetPC();
+            return View(pc);
+        }
+
+        public PatronClient GetPC()
+        {
+            var userId = User.Identity.GetUserId();
+            var pc = db.PatronClients.Where(b => b.UserId == userId).FirstOrDefault();
+            return pc;
+        }
+
+        public IEnumerable<FaveBeer> GetFaves()
+        {
+            var pc = GetPC();
+            var fbs = pc.FaveBeers;
+            return fbs; 
+        }
+
+        public IEnumerable<PrevPickedBeer> GetPrevPicks()
+        {
+            var pc = GetPC();
+            var pps= pc.PrevPicks;
+            return pps;
+        }
 
         public ActionResult ChoosePrefFaves()
         {

@@ -9,6 +9,7 @@ namespace PickMyBeer.Models
     public class Style
     {
         public int Id { get; set; }
+        public string BreweryDbId { get; set; }
         public string Name { get; set; }
 
     }

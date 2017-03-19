@@ -7,40 +7,20 @@
     var url = 'http://api.brewerydb.com/v2/search';
     var key = 'd066193b962205c7958a875ed3aeba74';
 
-    ////***Get Beers Initial Search
-    //$("#getBeersByName").click(function () {
-    //    page = 1;
-    //    var queryString = $("#beerN").val()
-    //    var searchUrl = url + '?' + 'name=*' + queryString + '*&key=' + key + '&p=' + page;
-    //    console.log(searchUrl);
-    //    var data = {
-    //        "withBreweries": "Y",
-    //        "withIngredients": "Y",
-    //    }
-    //    $.get(searchUrl, data, function (resp) {
-    //        beers = resp.data;
-    //        page = resp.currentPage;
-    //        maxPage = resp.numberOfPages
-    //        console.log(resp)
-    //        showSBeers(resp.data)
-    //    });
-
-    //});
-
-    var getBeersOnTap = function () {
+    var getBeersInPkgs = function () {
         var id = $(".bcid").val()
-        $.get('http://localhost:54414/BarUser/GetBeersOnTap?barClientId=' + id, function (resp) {
+        $.get('http://localhost:54414/BarUser/GetBeerInPkgs?barClientId=' + id, function (resp) {
             console.log(resp)
-            showBeersOnTap(resp)
+            showBeersInPkgs(resp)
         });
     }
        
-    var showBeersOnTap = function (beerOnTaps) {
-        var ctrl = $(".beersOnTap")
+    var showBeersInPkgs = function (beerInPkgs) {
+        var ctrl = $(".beersInPkgs")
         ctrl.empty();
-        for (idx in beerOnTaps) {
-            var name = beerOnTaps[idx].Beer.Name;
-            var beerId = beerOnTaps[idx].Beer.Id
+        for (idx in beerInPkgs) {
+            var name = beerInPkgs[idx].Beer.Name;
+            var beerId = beerInPkgs[idx].Beer.Id
             ctrl.append("<li><a href='http://localhost:54414/Beer/Details?beerId=" + beerId + "'>" + name + "</a> | <button data-beerId =" + beerId + "class='deleteTapBeer'>Remove</button></li>");
         };
     };
@@ -164,11 +144,12 @@
         //************************************************************************
 
         $(".chooseTapBeer").click(function () {
+            $("div#divLoading").addClass('show');
             var idx = $(this).attr("data-bIdx");
             //var jsonData = beers[idx];
             var jsonData = JSON.stringify(beers[idx]);
-            console.log(jsonData);
-            //alert(beer[idx].name + 'added')
+            //console.log(jsonData);
+            alert(beer[idx].name + 'added')
             console.log("*********Added Beer*************")
             $.ajax({
                 url: 'http://localhost:54414/Beer/AddBeerToTap',
@@ -176,13 +157,12 @@
                 dataType: "json",
                 type: 'POST',
                 data: jsonData
+
             }).done(function () {
                 console.log("getting beers")
                 getBeersOnTap();
-                $("#beerN").focus();
-                
-
             })
+            $("div#divLoading").removeClass('show');
         });
 
         $(".deleteTapBeer").click(function () {
