@@ -1,0 +1,245 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+
+<head>
+    <script src="http://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="~/Scripts/PickMyBeer.js">
+    </script>
+</head>
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-lg-5">
+            <article class="card animated fadeInLeft">
+                @if (ViewBag.Match.PrefBeer.LabelURL != null)
+                {
+                    <img class="card-img-top img-beer" src="@ViewBag.Match.PrefBeer.LabelURL" alt="Beer Label" />
+                }
+                else
+                {
+                    <img class="card-img-top img-beer" src="~/Uploads/beer_PNG2383 (1).png" alt="Beer Label" />
+                }
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h3 class="card-title">Your Match</h3>
+                            <h4 class="card-title">@ViewBag.Match.PrefBeer.Name</h4>
+                            <h6 class="text-muted">@ViewBag.Match.PrefBeer.Brewery.Name</h6>
+                        </div>
+                        <div class="col-lg-4">
+                            <br />
+                            <br />
+                            @Html.ActionLink("Add To Faves", "AB2Faves", "Beer", new { beerId = @ViewBag.Match.PrefBeer.Id }, new { @class = "btn btn-small btn-success" })
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <span>Style:</span>
+                                    </div>
+                                    @if (ViewBag.Match.PrefBeer.Style.Name != null)
+                                    {
+                                        <div class="col-lg-9">
+                                            <span class="text-center">@ViewBag.Match.PrefBeer.Style.Name</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-lg-9">
+                                            <span class="text-center"> n/a </span>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <span>IBU:</span>
+                                    </div>
+                                    @if (ViewBag.Match.PrefBeer.IBU > 0)
+                                    {
+                                        <div class="col-lg-9">
+                                            <span class="text-center">@ViewBag.Match.PrefBeer.IBU</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-lg-9">
+                                            <span class="text-center"> n/a </span>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <span>ABV:</span>
+                                    </div>
+                                    @if (ViewBag.Match.PrefBeer.ABV > 0)
+                                    {
+                                        <div class="col-lg-9">
+                                            <span class="text-center">@ViewBag.Match.PrefBeer.ABV</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-lg-9">
+                                            <span class="text-center"> n/a </span>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                @if (ViewBag.Match.PrefBeer.Description != null)
+                                {
+                                    <div class="example-popovers">
+                                        <button type="button" class="btn btn-success"
+                                                data-toggle="popover" data-placement="top"
+                                                title="Description"
+                                                data-content="@ViewBag.Match.PrefBeer.Description">
+                                            Show Desc.
+                                        </button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="col-lg-2 text-center">
+            <br />
+            <br />
+            <div class="row">
+                @if (ViewBag.Prev == true)
+                {
+                    @Html.ActionLink("<", "ShowMatch", new { match = (ViewBag.PPg), t = ViewBag.T, barId = ViewBag.BarId }, new { @class = "btn btn-small btn-success" })
+                }
+                @if (ViewBag.Next == true)
+                {
+                    @Html.ActionLink(">", "ShowMatch", new { match = (ViewBag.NPg), t = ViewBag.T, barId = ViewBag.BarId }, new { @class = "btn btn-small btn-success" })
+                }
+            </div>
+            <br />
+            @if (ViewBag.TopScore == true)
+            {
+                <div class="row">
+                    <div class="top">
+                        <h2>TOP SCORE!</h2>
+                    </div>
+                </div>
+            }
+            <br />
+            <div class="row">
+                <img class="img-responsive text-center" src="~/Uploads/rightarrow.png" alt="Matches To" />
+            </div>
+            <br />
+            <div class="row">
+                <h2>Score:</h2>
+            </div>
+            <div class="row">
+                <h2>@ViewBag.Score</h2>
+            </div>
+            <br/>
+            <div class="row">
+                @Html.ActionLink("Choose Match", "SaveMatch", new { match = ++ViewBag.PPg, t = ViewBag.T, barId = ViewBag.BarId }, new { @class = "btn btn-success" })
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <article class="card animated fadeInLeft">
+                @if (ViewBag.Match.MatchBeer.LabelURL != null)
+            {
+                    <img class="card-img-top img-beer" src="@ViewBag.Match.MatchBeer.LabelURL" alt="Beer Label" />
+                }
+                else
+                {
+                    <img class="card-img-top img-beer" src="~/Uploads/beer_PNG2383 (1).png" alt="Beer Label" />
+                }
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h3 class="card-title">Your Match</h3>
+                            <h4 class="card-title">@ViewBag.Match.MatchBeer.Name</h4>
+                            <h6 class="text-muted">@ViewBag.Match.MatchBeer.Brewery.Name</h6>
+                        </div>
+                        <div class="col-lg-4">
+                            <br/>
+                            <br/>
+                            @Html.ActionLink("Add To Faves", "AB2Faves", "Beer", new { beerId = @ViewBag.Match.MatchBeer.Id }, new { @class = "btn btn-small btn-success" })
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <span>Style:</span>
+                                    </div>
+                                    @if (ViewBag.Match.MatchBeer.Style.Name != null)
+                                    {
+                                        <div class="col-lg-9">
+                                            <span class="text-center">@ViewBag.Match.MatchBeer.Style.Name</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-lg-9">
+                                            <span class="text-center"> n/a </span>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <span>IBU:</span>
+                                    </div>
+                                    @if (ViewBag.Match.MatchBeer.IBU > 0)
+                                    {
+                                        <div class="col-lg-9">
+                                            <span class="text-center">@ViewBag.Match.MatchBeer.IBU</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-lg-9">
+                                            <span class="text-center"> n/a </span>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <span>ABV:</span>
+                                    </div>
+                                    @if (ViewBag.Match.MatchBeer.ABV > 0)
+                                    {
+                                        <div class="col-lg-9">
+                                            <span class="text-center">@ViewBag.Match.MatchBeer.ABV</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-lg-9">
+                                            <span class="text-center"> n/a </span>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                @if (ViewBag.Match.MatchBeer.Description != null)
+                                {
+                                    <div class="example-popovers">
+                                        <button type="button" class="btn btn-success"
+                                                data-toggle="popover" data-placement="top"
+                                                title="Description"
+                                                data-content="@ViewBag.Match.MatchBeer.Description">
+                                            Show Desc.
+                                        </button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

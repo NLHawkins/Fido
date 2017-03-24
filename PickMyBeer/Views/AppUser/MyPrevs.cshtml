@@ -3,5 +3,39 @@
     ViewBag.Title = "MyPrevs";
 }
 
-<h2>MyPrevs</h2>
 
+<div class="conatiner">
+    <div class="col-lg-12 text-center">
+        <h2>My Previous Matches</h2>
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>Your Pick</th>
+            <th>Your Match</th>
+            <th>Location</th>
+            <th>Score</th>
+            <th>Date</th>
+        </tr>
+        @foreach (var item in ViewBag.PMs)
+        {
+            <tr>
+                <td>
+                    <a href="http://localhost:54414/Beer/Details?beerId=@item.Match.PrefBeer.Id">@item.Match.PrefBeer.Name</a>
+                </td>
+                <td>
+                    <a href="http://localhost:54414/Beer/Details?beerId=@item.Match.MatchBeer.Id">@item.Match.MatchBeer.Name</a>
+                </td>
+                <td>
+                    <a href="http://localhost:54414/BarUser/Details?barId=@item.BC.Id">@item.BC.BarName</a>
+                </td>
+                <td>
+                    @item.Match.Score
+                </td>
+                <td>
+                    @item.Match.TimeStamp
+                </td>
+            </tr>
+        }
+        
+    </table>
+</div>

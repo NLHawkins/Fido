@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "ManageBeers";
+}
+
+
+<div class="container">
+    <div class="col-lg-12">
+        <h4>On Tap</h4>
+        <div class="wrapper">
+            <div class="media-list">
+                @foreach (var item in ViewBag.OnTap)
+                {
+                    <div class="media info">
+                        <a href="http://localhost:54414/Beer/Details?beerId=@item.Beer.Id">
+                            <img class="pull-left" src="@item.Beer.LabelURL" alt="Beer Label">
+                            <div class="media-body">
+                                <h4 class="media-heading">@item.Beer.Name</h4>
+                                <p>
+                                    @item.Beer.Brewery.Name
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <h4>In Bottle/Can</h4>
+        <div class="wrapper">
+            <div class="media-list">
+                @foreach (var item in ViewBag.InPkgs)
+                {
+                    <div class="media info">
+                        <a href="http://localhost:54414/Beer/Details?beerId=@item.Beer.Id">
+                            <img class="pull-left" src="@item.Beer.LabelURL" alt="Beer Label">
+                            <div class="media-body">
+                                <h4 class="media-heading">@item.Beer.Name</h4>
+                                <p>
+                                    @item.Beer.Brewery.Name
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

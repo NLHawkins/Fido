@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "ReviewMatches";
+}
+
+<div class="conatiner">
+    <div class="col-lg-12 text-center">
+        <h2>Matches At Your Bar</h2>
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>Patron's Pick</th>
+            <th>Fido's Match</th>
+            <th>Score</th>
+            <th>Date</th>
+        </tr>
+        @foreach (var item in ViewBag.PMs)
+        {
+            <tr>
+                <td>
+                    <a href="http://localhost:54414/Beer/Details?beerId=@item.Match.PrefBeer.Id">@item.Match.PrefBeer.Name</a>
+                </td>
+                <td>
+                    <a href="http://localhost:54414/Beer/Details?beerId=@item.Match.MatchBeer.Id">@item.Match.MatchBeer.Name</a>
+                </td>
+                <td>
+                    @item.Match.Score
+                </td>
+                <td>
+                    @item.Match.TimeStamp
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

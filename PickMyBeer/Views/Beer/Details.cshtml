@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-4 text-center">
             <h2>
-                <img class="thumb" src="@Model.LabelURL" />
+                <img class="thumbs" src="@Model.LabelURL" />
             </h2>
         </div>
         <div class="col-lg-8">
@@ -30,9 +30,25 @@
             <div class="text-center">
                 @Model.Brewery.City, @Model.Brewery.State
             </div>
+            <div class="text-center">
+                <p>Ings</p>
+                @foreach (var item in Model.IngLogs)
+                {
+                    <p>
+                        <span>@item.Ingredient.Name</span>
+                    </p>
+                }
+            </div>
+            <div class="text-center">
+                <span>IBU: @Model.IBU</span>
+            </div>
+            <div class="text-center">
+                <span>IBU: @Model.ABV</span>
+            </div>
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-lg-8">
         <h4>

@@ -142,7 +142,7 @@
         });
         var prefPicked = function (beerId) {
             
-            window.location.href = 'http://localhost:54414/Home/PickLoc?beerId=' + beerId;
+            window.location.href = 'http://localhost:54414/Home/ChooseLoc?beerId=' + beerId;
         };
     };
 

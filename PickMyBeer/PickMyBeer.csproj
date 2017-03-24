@@ -368,10 +368,36 @@
     <Compile Include="Migrations\201703190029375_next.Designer.cs">
       <DependentUpon>201703190029375_next.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703221538318_ck10.cs" />
+    <Compile Include="Migrations\201703221538318_ck10.Designer.cs">
+      <DependentUpon>201703221538318_ck10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703221918292_images.cs" />
+    <Compile Include="Migrations\201703221918292_images.Designer.cs">
+      <DependentUpon>201703221918292_images.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703221932555_barimagelog.cs" />
+    <Compile Include="Migrations\201703221932555_barimagelog.Designer.cs">
+      <DependentUpon>201703221932555_barimagelog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703222014038_asdfawfiw.cs" />
+    <Compile Include="Migrations\201703222014038_asdfawfiw.Designer.cs">
+      <DependentUpon>201703222014038_asdfawfiw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703231723213_asdfawo.cs" />
+    <Compile Include="Migrations\201703231723213_asdfawo.Designer.cs">
+      <DependentUpon>201703231723213_asdfawo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703231737369_savematch.cs" />
+    <Compile Include="Migrations\201703231737369_savematch.Designer.cs">
+      <DependentUpon>201703231737369_savematch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppUserViewModels.cs" />
     <Compile Include="Models\BarClient.cs" />
+    <Compile Include="Models\BarImageLog.cs" />
+    <Compile Include="Models\BarUserViewModel.cs" />
     <Compile Include="Models\Beer.cs" />
     <Compile Include="Models\BeerArchive.cs" />
     <Compile Include="Models\BeerInPkg.cs" />
@@ -388,6 +414,7 @@
     <Compile Include="Models\PatronClient.cs" />
     <Compile Include="Models\PopBeer.cs" />
     <Compile Include="Models\PrevPickedBeer.cs" />
+    <Compile Include="Models\SavedMatch.cs" />
     <Compile Include="Models\Style.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -400,6 +427,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\JavaScript.js" />
+    <Content Include="Scripts\PickMyBeer.js" />
+    <Content Include="Scripts\_addBeerInPops.js" />
     <Content Include="Scripts\_addBeerInPkg .js" />
     <Content Include="Scripts\_addBeerOnTap.js" />
     <Content Include="Scripts\_addBeer.js" />
@@ -421,7 +450,12 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_AddPrefNew.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Uploads\5379_top-gun-neon-bar-sign.jpg" />
+    <Content Include="Uploads\beer_PNG2383 %281%29.png" />
+    <Content Include="Uploads\defaultImage.jpg" />
+    <Content Include="Uploads\FidoLogo.png" />
     <Content Include="Uploads\OrangeLoadinG.gif" />
+    <Content Include="Uploads\rightarrow.png" />
     <Content Include="Views\FindAndAddBeers.html" />
     <Content Include="Views\HtmlPage1.html" />
     <Content Include="Web.config" />
@@ -468,13 +502,21 @@
     <Content Include="Views\Home\PrefPicked.cshtml" />
     <Content Include="Views\Beer\MatchPage.cshtml" />
     <Content Include="Views\Home\ChooseLoc.cshtml" />
-    <Content Include="Views\AppUser\MyProfile.cshtml" />
     <Content Include="Views\AppUser\MyFaves.cshtml" />
     <Content Include="Views\AppUser\MyPrevs.cshtml" />
     <Content Include="Views\Shared\_LoadingPartial.cshtml" />
     <Content Include="Views\BarUser\AddBeerInPkg.cshtml" />
     <Content Include="Views\BarUser\AddBeerOnTap.cshtml" />
     <Content Include="Views\AppUser\ChoosePref.cshtml" />
+    <Content Include="Views\Home\PickMyBeer.cshtml" />
+    <Content Include="Views\AppUser\MyBeers.cshtml" />
+    <Content Include="Views\BarUser\AddBeerToPops.cshtml" />
+    <Content Include="Views\BarUser\AddBarLogo.cshtml" />
+    <Content Include="Views\BarUser\ManageBeers.cshtml" />
+    <Content Include="Views\Home\ShowMatch.cshtml" />
+    <Content Include="Views\BarUser\BarList.cshtml" />
+    <Content Include="Views\BarUser\Details.cshtml" />
+    <Content Include="Views\BarUser\ReviewMatches.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -601,6 +643,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703190029375_next.resx">
       <DependentUpon>201703190029375_next.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703221538318_ck10.resx">
+      <DependentUpon>201703221538318_ck10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703221918292_images.resx">
+      <DependentUpon>201703221918292_images.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703221932555_barimagelog.resx">
+      <DependentUpon>201703221932555_barimagelog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703222014038_asdfawfiw.resx">
+      <DependentUpon>201703222014038_asdfawfiw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703231723213_asdfawo.resx">
+      <DependentUpon>201703231723213_asdfawo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703231737369_savematch.resx">
+      <DependentUpon>201703231737369_savematch.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

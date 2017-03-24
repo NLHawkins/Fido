@@ -1,15 +1,21 @@
 ﻿@model PickMyBeer.Models.ChoosePrefPopsViewModel
 
 @{
-    ViewBag.Title = "ChoosePrefFaves";
+    ViewBag.Title = "ChoosePrefPops";
 }
-
-@using (Html.BeginForm("PrefPickedPops", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+<style>
+    *, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+</style>
+@*@using (Html.BeginForm("PrefPickedPops", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="container">
         <div class="row">
             <div class="form-group">
-                <h2>Choose from one of your faves</h2>
+                <h2>Choose from Popular Beers</h2>
                 <div class="col-md-6">
                     @Html.DropDownListFor(m => m.SelectedBeerId, Model.Beers, new { htmlAttributes = new { @class = "form-control text-box single-line" } })
                 </div>
@@ -21,4 +27,31 @@
             </div>
         </div>
     </div>
-}
+}*@
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h3>Choose Your Preferred Beer</h3>
+            <h3>From Some Popular Beers</h3>
+        </div>
+        <div class="col-lg-6 text-center">
+            <br/>
+            @Html.ActionLink("Back", "ChoosePref") | @Html.ActionLink("Home", "MyBeers") 
+        </div>
+    </div>
+    <div class="my_container">
+        <ul>
+            @foreach (var item in ViewBag.Pops)
+            {
+                <li class="block">
+                    <a href="http://localhost:54414/Home/ChooseLoc?beerId=@item.Beer.Id">
+                        <img src="@item.Beer.LabelURL" />
+                        <span>@item.Beer.Name</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+

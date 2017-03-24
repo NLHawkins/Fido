@@ -12,7 +12,8 @@ namespace PickMyBeer.Models
         public string UserName { get; set; }
         public string UserId { get; set; }
         public string BarName { get; set; }
-
+        public virtual BarImageLog BImgLog { get; set; }
+        public virtual ICollection<SavedMatch> SavedMatches { get; set; }
         //public virtual ICollection<BeerOnTap> BeerOnTaps { get; set; }
         //public virtual ICollection<BeerArchive> BeerArchives { get; set; }
     }

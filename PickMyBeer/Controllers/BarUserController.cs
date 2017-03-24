@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using Microsoft.AspNet.Identity;
+using System.IO;
 
 namespace PickMyBeer.Controllers
 {
@@ -14,7 +15,99 @@ namespace PickMyBeer.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        public ActionResult Details(int barId)
+        {
+            var bots = db.BeerOnTaps.Where(b => b.BarClientId == barId).ToList();
+            var availBeers = new List<Beer>();
+            foreach (var item in bots)
+            {
+                Beer b = db.Beers.Where(c => c.Id == item.BeerId).FirstOrDefault();
+                availBeers.Add(b);
+            }
+            var bips = db.BeerInPkgs.Where(b => b.BarClientId == barId).ToList();
+            foreach (var item in bips)
+            {
+                Beer b = db.Beers.Where(c => c.Id == item.BeerId).FirstOrDefault();
+                availBeers.Add(b);
+            }
+            ViewBag.ABs = availBeers;
+            var bc = db.BarClients.SingleOrDefault(b => b.Id == barId);
+            return View(bc);
+        }
+
+        public ActionResult BarList()
+        {
+            ViewBag.Bars = db.BarClients.ToList();
+            return View();
+        }
+
+        public ActionResult ReviewMatches()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = db.BarClients.Where(p => p.UserId == userId).FirstOrDefault();
+            ViewBag.PMs = user.SavedMatches;
+            return View();
+        }
         public ActionResult Index()
+        {
+
+            var userId = User.Identity.GetUserId();
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+            var bc = db.BarClients.SingleOrDefault(s => s.UserId == userId);
+            return View(bc);
+
+        }
+
+        public ActionResult ManageBeers()
+        {
+            var userId = User.Identity.GetUserId();
+            var bc = db.BarClients.SingleOrDefault(s => s.UserId == userId);
+            var onTaps = db.BeerOnTaps.Where(b => b.BarClientId == bc.Id);
+            ViewBag.OnTap = onTaps.ToList();
+            var inPkgs = db.BeerInPkgs.Where(a => a.BarClientId == bc.Id);
+            ViewBag.InPkgs = inPkgs.ToList();
+            return View();
+        }
+
+        public ActionResult AddBarLogo()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddLogo()
+        {
+            var uploadedFile = Request.Files[0];
+            string filename = $"{DateTime.Now.Ticks}{uploadedFile.FileName}";
+            var serverPath = Server.MapPath(@"~\Uploads");
+            var fullPath = Path.Combine(serverPath, filename);
+            uploadedFile.SaveAs(fullPath);
+
+            var image = new ImageUpload
+            {
+                File = filename,
+                Type = "logo"
+                
+            };
+            db.Images.Add(image);
+
+            var userId = User.Identity.GetUserId();
+            var bc = db.BarClients.SingleOrDefault(b => b.UserId == userId);
+            var imagelog = new BarImageLog
+            {
+                BarImgUpId = image.Id,
+                BarClientId = bc.Id,
+                Timestamp = DateTime.Now
+            };
+            db.BarImageLogs.Add(imagelog);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult AddBeerOnTap()
         {
             ViewBag.UserRole = User.Identity.GetUserRole();
             var userId = User.Identity.GetUserId();
@@ -23,12 +116,9 @@ namespace PickMyBeer.Controllers
             return View();
         }
 
-        public ActionResult AddBeerOnTap()
+        public ActionResult AddBeerToPops()
         {
-            ViewBag.UserRole = User.Identity.GetUserRole();
-            var userId = User.Identity.GetUserId();
-            var bc = db.BarClients.Where(b => b.UserId == userId).FirstOrDefault();
-            ViewBag.BCId = bc.Id;
+
             return View();
         }
 
@@ -63,6 +153,11 @@ namespace PickMyBeer.Controllers
             return Json(beerOnTaps, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetBeersInPops()
+        {
+            var beerInPops = db.PopBeers.ToList();
+            return Json(beerInPops, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult GetBeerInPkgs(int barClientId)
         {
             var beerInPkgs = db.BeerInPkgs.Where(b => b.BarClientId == barClientId).ToList();

@@ -1,14 +1,41 @@
-﻿<html>
+﻿@model PickMyBeer.Models.BarClient
+
+<html>
 <head>
     <script src="http://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="~/Scripts/_addBeerOnTap.js">
     </script>
 </head>
 <body>
-    <div class="conatainer">
-        <input type="hidden" class="bcid" value=@ViewBag.BCId />
-        <h4>@Html.ActionLink("Add Beer On Tap", "AddBeerOnTap")</h4>
-        <h4>@Html.ActionLink("Add Beer In Pkg", "AddBeerInPkg")</h4>
-    </div>
+    @using (Html.BeginForm("Create", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="conatainer">
+            <div class="row">
+                <div class="col-lg-4">
+                    @if (Model.BImgLog != null)
+                    {
+                        <div class="thumbnail">
+                            <img src="@Model.BImgLog.ImageUpload.FilePath" class="barlogo" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="thumbnail">
+                            <img src="~/Uploads/defaultImage.jpg" class="barlogo" />
+                        </div>
+                    }
+                </div>
+                <div class="col-lg-8 text-center">
+                    <br/>
+                    <h4>@Html.ActionLink("Add Beer On Tap", "AddBeerOnTap")</h4>
+                    <br />
+                    <h4>@Html.ActionLink("Add Beer In Pkg", "AddBeerInPkg")</h4>
+                    <br/>
+                    <h4>@Html.ActionLink("Change Bar Logo", "AddBarLogo")</h4>
+                </div>
+            </div>
+        </div>
+    }
+
 </body>
 </html>

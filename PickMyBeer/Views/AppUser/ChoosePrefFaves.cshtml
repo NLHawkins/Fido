@@ -3,14 +3,20 @@
 @{
     ViewBag.Title = "ChoosePrefFaves";
 }
-
+<style>
+    *, *:before, *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+</style>
 @using (Html.BeginForm("PrefPickedFave", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 <div class="container">
     <div class="row">
         <div class="form-group">
             <h2>Choose from one of your faves</h2>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 @Html.DropDownListFor(m => m.SelectedBeerId, Model.Beers, new { htmlAttributes = new { @class = "form-control text-box single-line" } })
             </div>
         </div>
@@ -19,6 +25,20 @@
                 <input type="submit" value="Choose" class="btn btn-success" />
             </div>
         </div>
+    </div>
+    <hr/>
+    <div class="my_container">
+        <ul>
+            @foreach (var item in ViewBag.Faves)
+            {
+                <li class="block">
+                    <a href="http://localhost:54414/Home/ChooseLoc?beerId=@item.Beer.Id">
+                        <img src="@item.Beer.LabelURL" />
+                        <span>@item.Beer.Name</span>
+                    </a>
+                </li>
+            }
+        </ul>
     </div>
 </div>
 }

@@ -11,21 +11,39 @@ namespace PickMyBeer.Controllers
     public class AppUserController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
-        // GET: User
+
+        public ActionResult MyFaves()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = db.PatronClients.Where(p => p.UserId == userId).FirstOrDefault();
+            ViewBag.Faves = user.FaveBeers.ToList();
+            return View();
+        }
+
         public ActionResult Index()
+        {
+            var user = User.Identity.GetUserId();
+            if (user == null)
+            {
+                return RedirectToAction("Login","Account");
+            }
+            return View();
+        }
+        public ActionResult MyPrevs()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = db.PatronClients.Where(p => p.UserId == userId).FirstOrDefault();
+            ViewBag.PMs = user.SavedMatches;
+            return View();
+        }
+
+        public ActionResult MyBeers()
         {
             var userId = User.Identity.GetUserId();
             var user = db.PatronClients.Where(p => p.UserId == userId).FirstOrDefault();
             var bList = new BeerCollection();
-            foreach (var item in user.FaveBeers)
-            {
-                Beer beer = db.Beers.Where(b => b.Id == item.BeerId).FirstOrDefault();
-                bList.Add(beer);
-            }
 
-            ViewBag.UserFaves = user.FaveBeers;
-            ViewBag.FaveList = bList;
-            
+            ViewBag.PrevPicks = user.PrevPicks;
             return View();
         }
         public ActionResult AddBeerToFaves()
@@ -72,7 +90,7 @@ namespace PickMyBeer.Controllers
         {
             var userId = User.Identity.GetUserId();
             var pc = db.PatronClients.Where(p => p.UserId == userId).FirstOrDefault();
-            ViewBag.Faves = pc.FaveBeers;
+            ViewBag.Faves = pc.FaveBeers.ToList();
 
             var model = new ChoosePrefFavesViewModel
             {
@@ -90,8 +108,8 @@ namespace PickMyBeer.Controllers
         public ActionResult ChoosePrefPops()
         {
 
-            ViewBag.Pops = db.PopBeers;
-
+            ViewBag.Pops = db.PopBeers.ToList();
+            
             var model = new ChoosePrefPopsViewModel
             {
                 Beers = GetPopBeers()

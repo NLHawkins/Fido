@@ -38,6 +38,9 @@ namespace PickMyBeer.Models
         public DbSet<PopBeer> PopBeers { get; set; }
         public DbSet<Match> Matches { get; set; }
         public DbSet<BeerInPkg> BeerInPkgs { get; set; }
+        public DbSet<ImageUpload> Images { get; set; }
+        public DbSet<BarImageLog> BarImageLogs { get; set; }
+        public DbSet<SavedMatch> SavedMatches { get; set; }
 
 
         public ApplicationDbContext()

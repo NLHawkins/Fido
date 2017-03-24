@@ -40,9 +40,8 @@
                     }
                     else if (User.Identity.GetUserRole() == "PatronClient")
                     {
-                        <li>@Html.ActionLink("My Profile", "Index", "AppUser")</li>
-                        <li>@Html.ActionLink("My Beers", "ManageBeers", "AppUser")</li>
-                        <li>@Html.ActionLink("Explore Bars", "BeersOnTap", "AppUser")</li>
+                        <li>@Html.ActionLink("My Beers", "MyBeers", "AppUser")</li>
+                        <li>@Html.ActionLink("Explore Bars", "BarList", "BarUser")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

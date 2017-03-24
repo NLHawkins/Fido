@@ -14,6 +14,7 @@ namespace PickMyBeer.Models
         public int MatchBeerId { get; set; }
         public DateTime Created { get; set; }
         public int PatronClientId { get; set; }
+        public int BarClientId { get; set; }
         [ForeignKey("PrefBeerId")]
         public virtual Beer PrefBeer { get; set; }
         [ForeignKey("MatchBeerId")]

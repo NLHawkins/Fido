@@ -25,6 +25,12 @@ namespace PickMyBeer.Controllers
             return Json("{\"result\":\"ok\"}", JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult AB2Faves(int beerId)
+        {
+            var beer = db.Beers.Where(b => b.Id == beerId).FirstOrDefault();
+            AddFaveBeer(beer);
+            return RedirectToAction("MyFaves", "AppUser");
+        }
         public ActionResult AddBeerToTap()
         {
             Beer beer = AddBeer();
@@ -42,6 +48,13 @@ namespace PickMyBeer.Controllers
             return Json("{\"result\":\"ok\"}", JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult AddBeerInPops()
+        {
+
+            Beer beer = AddBeer();
+            AddPopBeer(beer);
+            return Json("{\"result\":\"ok\"}", JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult MVCAddBeerToTap()
         {
@@ -99,6 +112,14 @@ namespace PickMyBeer.Controllers
             pb.UserId = userId;
             pb.Created = DateTime.Now;
             db.BeerInPkgs.Add(pb);
+            db.SaveChanges();
+        }
+
+        private void AddPopBeer(Beer beer)
+        {
+            var pb = new PopBeer();
+            pb.BeerId = beer.Id;
+            db.PopBeers.Add(pb);
             db.SaveChanges();
         }
 
@@ -207,8 +228,7 @@ namespace PickMyBeer.Controllers
                             var newIng = new Ingredient();
                             string iName = ing.name;
                             newIng.Name = iName;
-                            newIng.Id = ing.id;
-                            var ingCk = db.Ingredients.Where(d => d.Id == newIng.Id).FirstOrDefault();
+                            var ingCk = db.Ingredients.Where(d => d.Name == iName).FirstOrDefault();
                             if (ingCk == null)
                             {
                                 db.Ingredients.Add(newIng);

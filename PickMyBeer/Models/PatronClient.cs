@@ -15,6 +15,8 @@ namespace PickMyBeer.Models
 
         public virtual ICollection<FaveBeer> FaveBeers { get; set; }
         public virtual ICollection<PrevPickedBeer> PrevPicks { get; set; }
+        public virtual ICollection<SavedMatch> SavedMatches { get; set; }
+
     }
 
     

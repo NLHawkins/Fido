@@ -1,0 +1,24 @@
+﻿@model PickMyBeer.Models.PatronClient
+
+@{
+    ViewBag.Title = "MyBeers";
+}
+
+<div class="container">
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-lg-4 text-center">
+            @Html.ActionLink("My Faves", "MyFaves", new { }, new { @class = "btn btn-lg btn-purple"})
+        </div>
+        <div class="col-lg-4 text-center">
+            @Html.ActionLink("Previous Matches", "MyPrevs", new { }, new { @class = "btn btn-lg btn-purple" })
+        </div>
+        <div class="col-lg-4 text-center">
+            @Html.ActionLink("PickMyBeer", "ChoosePref","AppUser", new { }, new { @class = "btn btn-lg btn-purple" })
+        </div>
+    </div>
+</div>
+

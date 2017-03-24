@@ -139,7 +139,7 @@
                 data: jsonData
 
             }).done(function () {
-                window.location.replace("http://localhost:54414/AppUser/MyProfile");
+                window.location.replace("http://localhost:54414/AppUser/MyFaves");
             })
         });
     };

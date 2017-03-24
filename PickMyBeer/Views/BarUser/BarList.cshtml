@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "BarList";
+}
+
+<style>
+    *, *:before, *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+</style>
+<div class="conatainer">
+    <h2>Bars</h2>
+    <div class="text-right">
+        @Html.ActionLink("Pick My Beer", "ChoosePref") | @Html.ActionLink("Back To My Beers", "MyBeers", "AppUser");
+    </div>
+
+    <hr />
+    <div class="my_container">
+        <ul>
+            @foreach (var item in ViewBag.Bars)
+            {
+                <li class="block">
+                    <a href="http://localhost:54414/BarUser/Details?barId=@item.Id">
+                        @if (item.BImgLog != null)
+                        {
+                           if (item.BImgLog.ImageUpload.FilePath != null)
+                           {
+                            <img src="@item.BarImageLog.ImageUpload.FilePath" />
+                           }
+                        }
+                        else
+                        {
+                            <img src="~/Uploads/5379_top-gun-neon-bar-sign.jpg" />
+                        }
+                        <span>@item.BarName</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

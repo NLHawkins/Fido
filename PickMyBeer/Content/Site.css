@@ -76,3 +76,220 @@ div.content {
 width : 1000px;
 height : 1000px;
 }
+
+img.beerthumbs {
+    width : 50px;
+    height : 50px
+}
+
+.popover-header {
+  padding: 8px 14px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ebebeb;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+}
+
+.popover-title {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.example-popovers {
+  padding: 30px 0;
+}
+.come-in {
+  -webkit-transform: translateY(150px);
+      -ms-transform: translateY(150px);
+          transform: translateY(150px);
+  -webkit-animation: come-in 0.8s ease forwards;
+          animation: come-in 0.8s ease forwards;
+}
+
+.come-in:nth-child(odd) {
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+}
+
+.already-visible {
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-animation: none;
+          animation: none;
+}
+
+@-webkit-keyframes come-in {
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes come-in {
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+.my_container ul {
+  list-style: none;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  clear: both;
+}
+.my_container ul .block {
+  width: 20%;
+  height: auto;
+  position: relative;
+  float: left;
+  margin: 0 0 0 0;
+  padding: 0 0 20% 0;
+  transition: 0.8s ease;
+}
+
+.my_container ul .ablock {
+  width: 33%;
+  height: auto;
+  position: relative;
+  float: left;
+  margin: 0 0 0 0;
+  padding: 0 0 20% 0;
+  transition: 0.8s ease;
+}
+.my_container ul .block:hover span {
+  height: 50%;
+}
+@media screen and (max-width: 1280px) {
+  .my_container ul .block {
+    width: 25%;
+    padding-bottom: 25%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .my_container ul .block {
+    width: 33.33%;
+    padding-bottom: 33.33%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .my_container ul .block {
+    width: 50%;
+    padding-bottom: 50%;
+  }
+}
+@media screen and (max-width: 360px) {
+  .my_container ul .block {
+    width: 100%;
+    padding-bottom: 100%;
+  }
+}
+.my_container ul .block img {
+  max-width: none;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.my_container ul .block span {
+  width: 100%;
+  height: 3rem;
+  line-height: 3rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 1rem;
+  font-size: 1.3rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.8s ease;
+}
+.wrapper {
+  margin: 100px;
+}
+
+.media {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.media img {
+  max-width: 120px;
+}
+
+.media-body {
+  padding: 16px 20px 18px 30px;
+}
+
+.media-body > p {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.media > a {
+  display: block;
+  overflow: auto;
+  transition: all 0.2s ease-in-out;
+}
+
+.media-heading,
+.media-heading a {
+  font-family: 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 23px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  letter-spacing: 0.07em;
+}
+
+.media.info {
+  background-color: #ffffff;
+}
+
+.media.info a,
+.media.info a:focus,
+.media.info a:hover {
+  text-decoration: none;
+}
+
+.media.info > a:focus,
+.media.info > a:hover {
+  background-color: #dddddd;
+}
+
+.media.featured {
+  color: #ffffff;
+  background-color: #155fa2;
+}
+
+.media.featured a,
+.media.featured a:focus,
+.media.featured a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.media.featured > a:focus,
+.media.featured > a:hover {
+  background-color: #008cba;
+}
+
+ img .barlogo{
+    max-height: 200px;
+    width:auto;
+}
+
+ .container .logo img {
+     height:200px;
+     width: 200px;
+ }
+
+ #logo{
+     height:200px;
+     width: 200px;
+ }
