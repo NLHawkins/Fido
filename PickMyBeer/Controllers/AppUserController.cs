@@ -33,7 +33,7 @@ namespace PickMyBeer.Controllers
         {
             var userId = User.Identity.GetUserId();
             var user = db.PatronClients.Where(p => p.UserId == userId).FirstOrDefault();
-            ViewBag.PMs = user.SavedMatches;
+            ViewBag.PMs = user.SavedMatches.OrderByDescending(o => o.Match.TimeStamp);
             return View();
         }
 

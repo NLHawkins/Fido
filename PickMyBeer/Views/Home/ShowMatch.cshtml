@@ -39,7 +39,14 @@
                             <div class="col-lg-8">
                                 <div class="row">
                                     <div class="col-lg-3">
+                                       @if (ViewBag.StyleM == true)
+                                       {
+                                        <span style="color:darkorange; font-weight:bold">Style:</span>
+                                       }
+                                       else
+                                       {
                                         <span>Style:</span>
+                                       }
                                     </div>
                                     @if (ViewBag.Match.PrefBeer.Style.Name != null)
                                     {
@@ -56,7 +63,14 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3">
-                                        <span>IBU:</span>
+                                        @if (ViewBag.IBU == true)
+                                        {
+                                            <span style="color:darkorange; font-weight:bold">IBU:</span>
+                                        }
+                                        else
+                                        {
+                                            <span>IBU:</span>
+                                        }
                                     </div>
                                     @if (ViewBag.Match.PrefBeer.IBU > 0)
                                     {
@@ -114,10 +128,15 @@
                 @if (ViewBag.Prev == true)
                 {
                     @Html.ActionLink("<", "ShowMatch", new { match = (ViewBag.PPg), t = ViewBag.T, barId = ViewBag.BarId }, new { @class = "btn btn-small btn-success" })
+
                 }
-                @if (ViewBag.Next == true)
+                else
                 {
-                    @Html.ActionLink(">", "ShowMatch", new { match = (ViewBag.NPg), t = ViewBag.T, barId = ViewBag.BarId }, new { @class = "btn btn-small btn-success" })
+                    @Html.ActionLink("<", "ShowMatch", new { match = (ViewBag.PPg), t = ViewBag.T, barId = ViewBag.BarId }, new { @class = "btn btn-small btn-success" })
+                }
+                    @if (ViewBag.Next == true)
+                {
+                        @Html.ActionLink(">", "ShowMatch", new { match = (ViewBag.NPg), t = ViewBag.T, barId = ViewBag.BarId }, new { @class = "btn btn-small btn-success" })
                 }
             </div>
             <br />
@@ -173,7 +192,14 @@
                             <div class="col-lg-8">
                                 <div class="row">
                                     <div class="col-lg-3">
-                                        <span>Style:</span>
+                                        @if (ViewBag.StyleM == true)
+                                        {
+                                            <span style="color:darkorange; font-weight:bold">Style:</span>
+                                        }
+                                        else
+                                        {
+                                            <span>Style:</span>
+                                        }
                                     </div>
                                     @if (ViewBag.Match.MatchBeer.Style.Name != null)
                                     {
@@ -190,7 +216,14 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3">
-                                        <span>IBU:</span>
+                                        @if (ViewBag.IBU == true)
+                                        {
+                                            <span style="color:darkorange; font-weight:bold">IBU:</span>
+                                        }
+                                        else
+                                        {
+                                            <span>IBU:</span>
+                                        }
                                     </div>
                                     @if (ViewBag.Match.MatchBeer.IBU > 0)
                                     {

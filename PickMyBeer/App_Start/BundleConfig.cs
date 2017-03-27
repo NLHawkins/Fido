@@ -25,6 +25,8 @@ namespace PickMyBeer
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/ionicons.css",
+                      "~/Content/font-awesome.css",
                       "~/Content/site.css"));
         }
     }

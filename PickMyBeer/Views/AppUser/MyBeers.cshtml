@@ -1,24 +1,41 @@
-﻿@model PickMyBeer.Models.PatronClient
-
-@{
-    ViewBag.Title = "MyBeers";
-}
+﻿
+<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 <div class="container">
-    <br />
+    <br/>
     <br />
     <br />
     <br />
     <div class="row">
-        <div class="col-lg-4 text-center">
-            @Html.ActionLink("My Faves", "MyFaves", new { }, new { @class = "btn btn-lg btn-purple"})
-        </div>
-        <div class="col-lg-4 text-center">
-            @Html.ActionLink("Previous Matches", "MyPrevs", new { }, new { @class = "btn btn-lg btn-purple" })
-        </div>
-        <div class="col-lg-4 text-center">
-            @Html.ActionLink("PickMyBeer", "ChoosePref","AppUser", new { }, new { @class = "btn btn-lg btn-purple" })
-        </div>
+        <a href=@Url.Action("MyFaves")>
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-12x ion-ios-star text-primary sr-icons"></i>
+                    <h2 class="text-primary">My Favorites</h2>
+                    <p class="text-muted">View and Manage a list of your favorite beers from which Fido can quickly fetch your match</p>
+                </div>
+            </div>
+        </a>
+        <a href=@Url.Action("ChoosePref")>
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="service-box">
+                    <div class="row">
+                        <span class="your-icon icon-home normal text-center"></span>
+                    </div>
+                    <h2 class="text-primary">Fetch My Beer</h2>
+                    <p class="text-muted">Send Fido to fetch your beer!</p>
+                </div>
+            </div>
+        </a>
+        <a href=@Url.Action("MyPrevs")>
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-12x ion-pin text-primary sr-icons"></i>
+                    <h2 class="text-primary">My Saved Matches</h2>
+                    <p class="text-muted">View your list of saved matches for quick ordering at the bar</p>
+                </div>
+            </div>
+        </a>
     </div>
 </div>
 

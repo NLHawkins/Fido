@@ -18,5 +18,19 @@
                 </div>
             </div>
         </div>
+        <hr />
+        <div class="my_container">
+            <ul>
+                @foreach (var item in ViewBag.Locs)
+                {
+                    <li class="barblock">
+                        <a href="http://localhost:54414/Home/PickMyBeer?barId=@item.Id&beerId=@ViewBag.BeerId">
+                            <img src="@item.BImgLog.ImageUpload.FilePath" />
+                            <span>@item.BarName</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
     </div>
 }

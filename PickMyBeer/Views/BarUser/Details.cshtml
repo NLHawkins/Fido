@@ -1,57 +1,74 @@
 ﻿@model PickMyBeer.Models.BarClient
-@{
-    ViewBag.Title = "Details";
-}
-
-<h2>Details</h2>
-
 <div class="container">
     <div class="row">
-        <div class="col-lg-4 text-center">
+        <div class="col-lg-12 text-center">
             <h2>
                 @if (Model.BImgLog != null)
                 {
-                    <img class="thumbnail" src="@Model.BImgLog.ImageUpload.FilePath" />
+                    <img class="detailLogo" src="@Model.BImgLog.ImageUpload.FilePath" />
                 }
                 else
                 {
-                    <img class="thumbnail" src="~/Uploads/5379_top-gun-neon-bar-sign.jpg" />
+                    <img class="detailLogo" src="~/Uploads/5379_top-gun-neon-bar-sign.jpg" />
                 }
             </h2>
-        </div>
-        <div class="col-lg-8">
-            <div class="text-center">
-                <h2>
-                    @Model.BarName
-                </h2>
-            </div>
         </div>
     </div>
     <div class="col-lg-12">
         <div class="wrapper">
-            <div class="media-list">
-                @foreach (var item in ViewBag.Abs)
+            <div class="col-lg-6">
+                <h2 class="text-primary text-center">Beers On Tap</h2>
+                <div class="media-list">
+                    @foreach (var item in ViewBag.BOTs)
             {
-                    <div class="media info">
-                        <a href="http://localhost:54414/Beer/Details?beerId=@item.Id">
-                            @if (item.LabelURL != null)
-                            {
-                                <img class="pull-left" src="@item.LabelURL" alt="Beer Label">
-                            }
-                            else
-                            {
-                                <img class="pull-left" src="~/Uploads/beer_PNG2383 (1).png" alt="Beer Label">
-                            }
-                            <div class="media-body">
-                                <h4 class="media-heading">@item.Name</h4>
-                                <p>
-                                    @item.Brewery.Name
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                }
+                        <div class="media info">
+                            <a href="http://localhost:54414/Beer/Details?beerId=@item.Id">
+                                @if (item.LabelURL != null)
+                                {
+                                    <img class="pull-left" src="@item.LabelURL" alt="Beer Label">
+                                }
+                                else
+                                {
+                                    <img class="pull-left" src="~/Uploads/beer_PNG2383 (1).png" alt="Beer Label">
+                                }
+                                <div class="media-body">
+                                    <h4 class="media-heading">@item.Name</h4>
+                                    <p>
+                                        @item.Brewery.Name
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
             </div>
+            <div class="col-lg-6">
+                <h2 class="text-primary text-center">Beers In Pkgs</h2>
+                <div class="media-list">
+                    @foreach (var item in ViewBag.BIPs)
+            {
+                        <div class="media info">
+                            <a href="http://localhost:54414/Beer/Details?beerId=@item.Id">
+                                @if (item.LabelURL != null)
+                                {
+                                    <img class="pull-left" src="@item.LabelURL" alt="Beer Label">
+                                }
+                                else
+                                {
+                                    <img class="pull-left" src="~/Uploads/beer_PNG2383 (1).png" alt="Beer Label">
+                                }
+                                <div class="media-body">
+                                    <h4 class="media-heading">@item.Name</h4>
+                                    <p>
+                                        @item.Brewery.Name
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>

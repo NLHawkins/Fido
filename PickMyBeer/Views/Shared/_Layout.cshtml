@@ -19,15 +19,17 @@
                 </button>
                 @if (User.Identity.GetUserRole() == "BarClient")
                 {
-                    @Html.ActionLink("PickMyBeer", "ReviewMatches", "BarUser", new { area = "" }, new { @class = "navbar-brand" })
-                }
-                else if (User.Identity.GetUserRole() == "PatronClient")
-                {
-                    @Html.ActionLink("PickMyBeer", "ChoosePref", "AppUser", new { area = "" }, new { @class = "navbar-brand" })
+                    //@Html.ActionLink("PickMyBeer", "ReviewMatches", "BarUser", new { area = "" }, new { @class = "navbar-brand" })
+                    <a href='@Url.Action("ReviewMatches", "BarUser")'>
+                        <img src='~/Uploads/FidoSmLogo.png' class="your-icon icon-nav navLogo" />
+                    </a>
                 }
                 else
                 {
-                    @Html.ActionLink("PickMyBeer", "ChoosePref", "AppUser", new { area = "" }, new { @class = "navbar-brand" })
+                    //@Html.ActionLink("PickMyBeer", "ChoosePref", "AppUser", new { area = "" }, new { @class = "navbar-brand" })
+                    <a href='@Url.Action("ChoosePref", "AppUser")'>
+                        <img src='~/Uploads/FidoSmLogo.png' class="your-icon icon-nav navLogo" />
+                    </a>
                 }
             </div>
             <div class="navbar-collapse collapse">
@@ -40,6 +42,7 @@
                     }
                     else if (User.Identity.GetUserRole() == "PatronClient")
                     {
+                        <li>@Html.ActionLink("Fido, Fetch!", "ChoosePref", "AppUser")</li>
                         <li>@Html.ActionLink("My Beers", "MyBeers", "AppUser")</li>
                         <li>@Html.ActionLink("Explore Bars", "BarList", "BarUser")</li>
                     }
@@ -50,11 +53,10 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer>
             <span class="text-right">
-                <a href="brewerydb.com">
-                    <img src="http://s3.amazonaws.com/brewerydb/Powered-By-BreweryDB.png" style="width:140px;height:40px;border:0;">
+                <a href="http://www.brewerydb.com">
+                    <img src="http://s3.amazonaws.com/brewerydb/Powered-By-BreweryDB.png" style="width:160px;height:40px;border:0;margin-left:625%">
                 </a>
             </span>
         </footer>

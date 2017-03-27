@@ -19,17 +19,23 @@ namespace PickMyBeer.Controllers
         {
             var bots = db.BeerOnTaps.Where(b => b.BarClientId == barId).ToList();
             var availBeers = new List<Beer>();
+            var BOTs = new List<Beer>();
+            var BIPs = new List<Beer>();
             foreach (var item in bots)
             {
                 Beer b = db.Beers.Where(c => c.Id == item.BeerId).FirstOrDefault();
+                BOTs.Add(b);
                 availBeers.Add(b);
             }
+            ViewBag.BOTs = BOTs;
             var bips = db.BeerInPkgs.Where(b => b.BarClientId == barId).ToList();
             foreach (var item in bips)
             {
                 Beer b = db.Beers.Where(c => c.Id == item.BeerId).FirstOrDefault();
+                BIPs.Add(b);
                 availBeers.Add(b);
             }
+            ViewBag.BIPs = BIPs;
             ViewBag.ABs = availBeers;
             var bc = db.BarClients.SingleOrDefault(b => b.Id == barId);
             return View(bc);

@@ -206,7 +206,7 @@ namespace PickMyBeer.Controllers
                         var im = new Match();
                         im.MatchBeerId = item.Id;
                         im.PrefBeerId = prefBeer.Id;
-                        im.Score = 15 - Convert.ToInt32(Math.Abs(Math.Round(prefBeer.IBU, 0, MidpointRounding.AwayFromZero) - Math.Round(item.IBU, 0, MidpointRounding.AwayFromZero)));
+                        im.Score = 15 - (Convert.ToInt32(Math.Abs(Math.Round(prefBeer.IBU, 0, MidpointRounding.AwayFromZero) - Math.Round(item.IBU, 0, MidpointRounding.AwayFromZero))));
                         im.TimeStamp = t;
                         db.Matches.Add(im);
                         MList.Add(im);
@@ -264,7 +264,7 @@ namespace PickMyBeer.Controllers
             ViewBag.Next = true;
             ViewBag.Pg = 1;
             ViewBag.BarId = barId;
-            return View();
+            return RedirectToAction("ShowMatch", new {match = 1, t = t, barId = barId});
         }
 
         public ActionResult ShowMatch(int match, DateTime t, int barId)
@@ -296,7 +296,29 @@ namespace PickMyBeer.Controllers
             {
                 ViewBag.Prev = true;
             }
-            ViewBag.Score = list[match - 1].Score;
+
+            var _m = list[match - 1];
+            var pageScore = list[match - 1].Score;
+            var topScore = list[0].Score;
+            double fracScore = (double)pageScore / topScore;
+            var score = fracScore * 100;
+            //var score = (list[match - 1].Score) / (list[0].Score) * 100;
+            //ViewBag.Score = list[match - 1].Score;
+            ViewBag.Score = score;
+            if (score == 100)
+            {
+                ViewBag.TopScore = true;
+            }
+            if (_m.MatchBeer.StyleId == _m.PrefBeer.StyleId)
+            {
+                ViewBag.StyleM = true;
+            }
+            var ibuDiff = _m.MatchBeer.IBU - _m.PrefBeer.IBU;
+            if (ibuDiff >= -15 && ibuDiff <= 15)
+            {
+                ViewBag.IBU = true;
+            }
+
             ViewBag.T = t;
             ViewBag.BarId = barId;
             ViewBag.Match = list[match - 1];
