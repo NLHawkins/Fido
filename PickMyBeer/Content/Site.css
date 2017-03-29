@@ -162,10 +162,6 @@ img.beerthumbs {
         margin: 0 0 0 0;
         padding: 0 0 20% 0;
         transition: 0.8s ease;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden
     }
 
     .my_container ul .ablock {
@@ -212,10 +208,12 @@ img.beerthumbs {
 
 .my_container ul .block img {
     max-width: none;
+    max-height: 100%;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    overflow:hidden;
 }
 
 .my_container ul .block span {
@@ -239,6 +237,7 @@ img.beerthumbs {
     position: absolute;
     top: 0;
     left: 0;
+    overflow: hidden;
 }
 
 .my_container ul .barblock span {
@@ -374,6 +373,7 @@ img .barlogo {
 .frontlogo img {
     max-height: 100%;
     max-width: 100%;
+    margin-left: 15%;
 }
 
 /******************* Animated Bubbles********************************/
@@ -713,24 +713,130 @@ body {
 .navbar{
     min-height: 58px;
 }
-.my_container ul .barblock{
 
-}
-.my_container ul .barblock img{
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
+.my_container ul .block span{
+    font-size: 3.0rem;
+    text-align:center;
 }
 
 .my_container ul .barblock span{
-    background: rgba(229, 168, 21, 0.5);
-    font-size: 3.3rem;
+    font-size: 3.0rem;
     text-align:center;
-    color: #97b56f;
 }
 
 .detailLogo{
-    max-width: 400px;
     height: 400px;
+    max-width: 400px;
 }
+
+a {
+    color: #e5a815;
+}
+
+h2{
+    color: #e5a815;
+}
+
+.btn-primary,
+.btn-success {
+    color: #e5a815;
+    background-color: #373534;
+    border-color: #373534;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-primary:hover,
+.btn-primary:focus
+ {
+    color: #373534;
+    background-color: #f3c249;
+    border-color: #605956;
+}
+/*.btn-primary {
+    color: #373534;
+    background-color: #f3c249;
+    border-color: #605956;
+}
+
+.btn-success {
+    color: #373534;
+    background-color: #f3c249;
+    border-color: #605956;
+}
+
+.btn-success:hover,
+.btn-success:focus
+ {
+    color: #ffffff;
+    background-color: #ff6a00;
+    border-color: #605956;
+}
+.btn-primary:hover,
+.btn-primary:focus
+ {
+    color: #ffffff;
+    background-color: #ff6a00;
+    border-color: #605956;
+}*/
+.btn{
+    font-size: 18px;
+    font-weight: bold;
+}
+.form-control {
+    display:inline-block;
+    margin-right: 8px;
+}
+
+.card-img-top.img-beer{
+    max-height: 400px;
+    max-width: 400px;
+    margin-left: 50px;
+
+} 
+
+.detailThumb{
+    max-height: 400px;
+    max-width: 400px;
+    margin-left: 27px;
+}
+
+.img-responsive{
+    width: 100px;
+    margin-left: 50px;
+
+}
+
+.media img{
+    height: 120px;
+}
+
+.btn-sm{
+    font-size: 17px;
+} 
+
+.form1{
+    height: 39px;
+    width: 50px;
+}
+ 
+.form2{
+    height: 39px;
+}
+
+.form-control{
+    font-size: 18px;
+}
+
+.popover{
+    width: 500px;
+}
+
+.algo{
+    max-width: 100%;
+    max-height: 100%;
+    width: 900px;
+    margin-left: 71px;
+    margin-top: 100px;
+}
+             

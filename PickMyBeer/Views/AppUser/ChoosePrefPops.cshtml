@@ -30,16 +30,17 @@
 }*@
 
 <div class="container">
+    <br/>
     <div class="row">
         <div class="col-lg-6">
-            <h3>Choose Your Preferred Beer</h3>
-            <h3>From Some Popular Beers</h3>
+            <h2>Choose Your Preferred Beer</h2>
         </div>
-        <div class="col-lg-6 text-center">
+        <div class="col-lg-6 text-right">
             <br/>
-            @Html.ActionLink("Back", "ChoosePref") | @Html.ActionLink("Home", "MyBeers") 
+            @Html.ActionLink("Back To Lists", "ChoosePref") | @Html.ActionLink("Home", "MyBeers") 
         </div>
     </div>
+    <hr/>
     <div class="my_container">
         <ul>
             @foreach (var item in ViewBag.Pops)

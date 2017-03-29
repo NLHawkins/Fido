@@ -4,13 +4,23 @@
     ViewBag.Title = "View";
 }
 
-<h2>Beer Details</h2>
+
 
 <div class="container">
     <div class="row">
+        <br/>
+        <div class="col-lg-6">
+            <h2>Beer Details</h2>
+        </div>
+        <div class="col-lg-6">
+            <br/>
+            @Html.ActionLink("Fetch Beer Like This One", "PickMyBeer", "Home") | @Html.ActionLink("Back to My Beers", "MyBeers", "AppUser")
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-4 text-center">
             <h2>
-                <img class="thumbs" src="@Model.LabelURL" />
+                <img class="detailThumb" src="@Model.LabelURL" />
             </h2>
         </div>
         <div class="col-lg-8">
@@ -20,48 +30,32 @@
                 </h2>
             </div>
             <div class="text-center">
-                <h2>
+                <h4>@Model.Brewery.Name</h4>
+            </div>
+            <div class="text-center">
+                <h4>@Model.Brewery.City, @Model.Brewery.State</h4>
+            </div>
+            <div class="text-center">
+                <h3>
                     @Model.Style.Name
-                </h2>
-            </div>
-            <div class="text-center">
-                @Model.Brewery.Name
-            </div>
-            <div class="text-center">
-                @Model.Brewery.City, @Model.Brewery.State
-            </div>
-            <div class="text-center">
-                <p>Ings</p>
-                @foreach (var item in Model.IngLogs)
-                {
-                    <p>
-                        <span>@item.Ingredient.Name</span>
-                    </p>
-                }
+                </h3>
             </div>
             <div class="text-center">
                 <span>IBU: @Model.IBU</span>
             </div>
             <div class="text-center">
-                <span>IBU: @Model.ABV</span>
+                <span>ABV: @Model.ABV</span>
             </div>
         </div>
     </div>
-</div>
+    <br/>
 
-<div class="row">
-    <div class="col-lg-8">
-        <h4>
-            @Model.Description
-        </h4>
-    </div>
-    <div class="col-lg-4 text-center">
-        @if (User.Identity.IsAuthenticated)
-            {
-            @Html.ActionLink("Pick My Beer Like This One", "PickMyBeer", "Home")
-        }
-        | @Html.ActionLink("Back to My List", "Index", "AppUser")
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <h4>
+                @Model.Description
+            </h4>
+        </div>
     </div>
 </div>
-
 

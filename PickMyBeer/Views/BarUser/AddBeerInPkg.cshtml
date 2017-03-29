@@ -10,56 +10,45 @@
         <input type="hidden" class="bcid" value=@ViewBag.BCId />
         <div class="row">
             <div class="col-lg-8">
+                <br />
                 <div class="row">
-                    <div class="col-lg-6">
-                        <h4>Search For A Beer By Its Name</h4>
-                        <input type="text" id="beerN" />
-                        <button id="searchBeersByName">Search</button>
+                    <div class="col-lg-5 text-primary">
+                        <br />
+                        <h3>Search and Choose a Beer</h3>
                     </div>
-                    <div class="col-lg-6">
-                        <h4>Search For A Beer By The Brewery</h4>
-                        <input type="text" id="beerB" />
-                        <button id="searchBeersByBrewery">Search</button>
+                    <div class="col-lg-7 text-right">
+                        <br />
+                        <input class="form-control form2" type="text" id="beerN" /><button id="searchBeersByName" class="btn btn-primary">Search</button>
                     </div>
                 </div>
                 <hr />
                 <div class="row">
                     <div id="pagingControls">
-                        <div class="col-lg-8">
-                            <button id="prevPage">Prev Page</button> || <button id="nextPage">Next Page</button>
-                        </div>
                         <div class="col-lg-4">
-                            <input type="text" id="page" /> <button id="goToPage">Go To Page</button>
+                            <button class="btn btn-primary btn-sm" id="prevPage">Prev Page</button> || <button class="btn btn-primary btn-sm" id="nextPage">Next Page</button>
                         </div>
+                        <div class="col-lg-8 text-right">
+                            <input class="form-control form1" type="text" id="page" /><button class="btn btn-primary btn-sm" id="goToPage">Go To Page</button>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
                     </div>
                 </div>
-                <br />
-                <hr />
                 <div>
-                    <table>
-                        <thead>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Style</th>
-                        <th>Brewery</th>
-                        </thead>
+                    <table id="resultTable" class="table table-striped">
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Style</th>
+                            <th>Brewery</th>
+                        </tr>
                         <tbody id="searchBeers"></tbody>
                     </table>
                 </div>
-                <hr />
-                <div class="row">
-                    <div id="pagingControls">
-                        <div class="col-lg-8">
-                            <button id="prevPage">Prev Page</button> || <button id="nextPage">Next Page</button>
-                        </div>
-                        <div class="col-lg-4">
-                            <input type="text" id="page" /> <button id="goToPage">Go To Page</button>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="col-lg-4">
-                <div><h2>Beers In Pkgs</h2></div>
+            <div class="col-lg-4" style="margin-top: 53px;">
+                <div><h2 class="text-center">Beers In Pkgs</h2></div>
                 <hr />
                 <div>
                     <ul class="beersInPkgs"></ul>

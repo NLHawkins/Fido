@@ -10,10 +10,20 @@
     }
 </style>
 <div class="conatainer">
-    <h2>My Favorite Beers</h2>
-    <div class="text-right">
-        @Html.ActionLink("Add Beer To Faves", "AddBeerToFaves") | @Html.ActionLink("Pick My Beer", "ChoosePref") | @Html.ActionLink("Back To My Beers", "MyBeers")
+    <br />
+    <div class="row">
+        <div class="col-lg-6">
+            <h2 class="text-primary">My Favorite Beers</h2>
+        </div>
+        <div class="col-lg-6">
+            <div class="text-right">
+                <br/>
+                @Html.ActionLink("Add New Favorite", "AddBeerToFaves", null, new { @style= "color:#e5a815" }) | @Html.ActionLink("Back To My Beers", "MyBeers", null, new { @style = "color:#e5a815" })
+            </div>
+        </div>
     </div>
+    
+    
 
     <hr />
     <div class="my_container">

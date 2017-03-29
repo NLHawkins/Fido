@@ -7,15 +7,16 @@
         <div class="row">
             <input name="BeerId" class="hidden" value="@ViewBag.BeerId" />
             <div class="form-group">
-                <h2>Where Are You Having A Beer?</h2>
-                <div class="col-md-4">
-                    @Html.DropDownListFor(m => m.SelectedBarId, Model.Bars, new { htmlAttributes = new { @class = "form-control text-box single-line" } })
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-6">
-                    <input type="submit" value="Choose" class="btn btn-purple" />
-                </div>
+                <h2 class="text-center">Choose Your Location</h2>
+                @*<div class="col-md-4">
+                            @Html.DropDownListFor(m => m.SelectedBarId, Model.Bars, new { htmlAttributes = new { @class = "form-control text-box single-line" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <input type="submit" value="Choose" class="btn btn-purple" />
+                        </div>
+                    </div>*@
             </div>
         </div>
         <hr />

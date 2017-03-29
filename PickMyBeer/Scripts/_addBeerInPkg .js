@@ -1,6 +1,7 @@
 ﻿$().ready(function () {
 
-
+    $("#resultTable").hide();
+    $("#pagingControls").hide();
     var beers = null;
     var page = 0;
     var maxPage = 0;
@@ -41,6 +42,8 @@
             page = resp.currentPage;
             maxPage = resp.numberOfPages
             console.log(resp)
+            $("#resultTable").show();
+            $("#pagingControls").show();
             showSBeers(resp.data)
         });
 

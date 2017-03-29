@@ -71,11 +71,23 @@ namespace PickMyBeer.Controllers
         {
             var userId = User.Identity.GetUserId();
             var bc = db.BarClients.SingleOrDefault(s => s.UserId == userId);
-            var onTaps = db.BeerOnTaps.Where(b => b.BarClientId == bc.Id);
-            ViewBag.OnTap = onTaps.ToList();
-            var inPkgs = db.BeerInPkgs.Where(a => a.BarClientId == bc.Id);
-            ViewBag.InPkgs = inPkgs.ToList();
-            return View();
+            var BOTs = new List<Beer>();
+            var BIPs = new List<Beer>();
+            var bots = db.BeerOnTaps.Where(b => b.BarClientId == bc.Id).ToList();
+            foreach (var item in bots)
+            {
+                Beer b = db.Beers.Where(c => c.Id == item.BeerId).FirstOrDefault();
+                BOTs.Add(b);
+            }
+            ViewBag.BOTs = BOTs;
+            var bips = db.BeerInPkgs.Where(b => b.BarClientId == bc.Id).ToList();
+            foreach (var item in bips)
+            {
+                Beer b = db.Beers.Where(c => c.Id == item.BeerId).FirstOrDefault();
+                BIPs.Add(b);
+            }
+            ViewBag.BIPs = BIPs;
+            return View(bc);
         }
 
         public ActionResult AddBarLogo()

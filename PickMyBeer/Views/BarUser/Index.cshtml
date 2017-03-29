@@ -11,7 +11,13 @@
     {
         <div class="conatainer">
             <div class="row">
+                <br />
+                <br />
+                <br />
                 <div class="col-lg-4">
+                    <br/>
+                    <br />
+                    <br />
                     @if (Model.BImgLog != null)
                     {
                         <div class="thumbnail">
@@ -27,11 +33,24 @@
                 </div>
                 <div class="col-lg-8 text-center">
                     <br/>
-                    <h4>@Html.ActionLink("Add Beer On Tap", "AddBeerOnTap")</h4>
                     <br />
-                    <h4>@Html.ActionLink("Add Beer In Pkg", "AddBeerInPkg")</h4>
-                    <br/>
-                    <h4>@Html.ActionLink("Change Bar Logo", "AddBarLogo")</h4>
+                    <br />
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <i class="fa fa-6x ion-beer text-primary sr-icons"></i>
+                            <h3>@Html.ActionLink("Add Beer On Tap", "AddBeerOnTap")</h3>
+                        </div>
+                        <div class="col-lg-4">
+                            <i class="fa fa-6x ion-ios-pint text-primary sr-icons"></i>
+                            <h3>@Html.ActionLink("Add Beer In Pkg", "AddBeerInPkg")</h3>
+                        </div>
+                        <div class="col-lg-4">
+                            <i class="fa fa-6x ion-images text-primary sr-icons"></i>
+                            <h3>@Html.ActionLink("Change Bar Logo", "AddBarLogo")</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

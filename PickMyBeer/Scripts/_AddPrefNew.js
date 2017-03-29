@@ -1,6 +1,7 @@
 ﻿$().ready(function () {
 
-
+    $("#resultTable").hide();
+    $("#pagingControls").hide();
     var beers = null;
     var page = 0;
     var maxPage = 0;
@@ -25,10 +26,21 @@
             page = resp.currentPage;
             maxPage = resp.numberOfPages
             console.log(resp)
+            $("#resultTable").show();
+            $("#pagingControls").show();
             showSBeers(resp.data)
         });
 
     });
+
+    //****************   loadingModal ***************************************
+    $body = $("body");
+    $(document).on({
+        ajaxStart: function () { $body.addClass("loading"); },
+        ajaxStop: function () { $body.removeClass("loading"); }
+    });
+
+    //************************************************************************
 
     $("#nextPage").click(function () {
         if (page < maxPage) {
@@ -43,6 +55,7 @@
             $.get(searchUrl, data, function (resp) {
                 beers = resp.data;
                 console.log(resp)
+                
                 showSBeers(resp.data)
             });
         }
@@ -114,7 +127,7 @@
 
             var beerId = beers[idx].id
             var beer = beers[idx]
-            ctrl.append("<tr><td>" + name + "</td><td>" + desc + "</td><td>" + style + "</td><td>" + brewery + "</td><td><button data-bIdx =" + idx + " class='choosePrefBeer'>Choose</button></td></tr>");
+            ctrl.append("<tr><td>" + name + "</td><td>" + desc + "</td><td>" + style + "</td><td>" + brewery + "</td><td><button data-bIdx =" + idx + " class='choosePrefBeer btn btn-primary'>Choose</button></td></tr>");
             
         };
 
