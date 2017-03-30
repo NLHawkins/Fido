@@ -24,17 +24,22 @@
                 <div class="card-block">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h2 class="card-title text-right">Your Match</h2>
+                            <h2 class="card-title text-right">Your Preferred Beer</h2>
                             <h3 class="card-title">@ViewBag.Match.PrefBeer.Name</h3>
-                            <h4 class="text-muted">@ViewBag.Match.PrefBeer.Brewery.Name</h4>
+                            @if (ViewBag.BrewMatch == true)
+                            {
+                                <h4 class="text-muted" style="color:darkorange; font-weight:bold">@ViewBag.Match.PrefBeer.Brewery.Name</h4>
+                            }
+                            else
+                            {
+                                <h4 class="text-muted">@ViewBag.Match.PrefBeer.Brewery.Name</h4>
+                            }
                         </div>
                         <div class="col-lg-4">
                             <br />
                             <br />
                             <br />
-                            <br />
-                            <br />
-                            <br />
+
                             @Html.ActionLink("Add To Faves", "AB2Faves", "Beer", new { beerId = @ViewBag.Match.PrefBeer.Id }, new { @class = "btn btn-success" })
                         </div>
                     </div>
@@ -135,7 +140,7 @@
                 }
                 else
                 {
-                    @Html.ActionLink("<", "ShowMatch", new { match = (ViewBag.PPg), t = ViewBag.T, barId = ViewBag.BarId }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("<", "ShowMatch", new { match = (ViewBag.PPg), t = ViewBag.T, barId = ViewBag.BarId }, new { @class = "btn btn-success", @disabled = "disabled"})
                 }
                 @if (ViewBag.Next == true)
                 {
@@ -143,7 +148,7 @@
                 }
                 else
                 {
-                    @Html.ActionLink(">", "ShowMatch", new { match = (ViewBag.NPg), t = ViewBag.T, barId = ViewBag.BarId }, new { @class = "btn btn-success" })
+                    @Html.ActionLink(">", "ShowMatch", new { match = (ViewBag.NPg), t = ViewBag.T, barId = ViewBag.BarId }, new { @class = "btn btn-success", @disabled = "disabled" })
                 }
             </div>
             <br />
@@ -156,14 +161,28 @@
                 </div>
             }
             <div class="row">
-                <img class="img-responsive text-center" src="~/Uploads/rightarrow.png" alt="Matches To" />
+                <img class="img-responsive text-center" src="~/Uploads/rightarrowYellow.png" alt="Matches To" />
             </div>
             @*<div class="row">
                 <h2>Score:</h2>
             </div>
             <div class="row">
-                <h2>@ViewBag.Score</h2>
+                <h2>@ViewBag.Score% Match</h2>
             </div>*@
+            <div class="row">
+                @if (ViewBag.Medal == "gold")
+                {
+                    <img src="~/Uploads/Gold-Medal--Arvin611r58-300px.png" class="medal" />
+                }
+                else if (ViewBag.Medal == "silver")
+                {
+                    <img src="~/Uploads/Silver-Medal--Arvin611r58-300px.png" class="medal"/>
+                }
+                else
+                {
+                    <img src="~/Uploads/Bronze-Medal--Arvin611r58-300px.png" class="medal"/>
+                }
+            </div>
             <br />
             <div class="row">
                 @Html.ActionLink("Save Match", "SaveMatch", new { match = ++ViewBag.PPg, t = ViewBag.T, barId = ViewBag.BarId }, new { @class = "btn btn-success" })
@@ -184,15 +203,20 @@
                         <div class="col-lg-8">
                             <h2 class="card-title text-right">Your Match</h2>
                             <h3 class="card-title">@ViewBag.Match.MatchBeer.Name</h3>
-                            <h4 class="text-muted">@ViewBag.Match.MatchBeer.Brewery.Name</h4>
+                            @if (ViewBag.BrewMatch == true)
+                            {
+                                <h4 class="text-muted" style="color:darkorange; font-weight:bold">@ViewBag.Match.MatchBeer.Brewery.Name</h4>
+                            }
+                            else
+                            {
+                                <h4 class="text-muted">@ViewBag.Match.MatchBeer.Brewery.Name</h4>
+                            }
                         </div>
                         <div class="col-lg-4">
                             <br />
                             <br />
                             <br/>
-                            <br />
-                            <br />
-                            <br />
+
                             @Html.ActionLink("Add To Faves", "AB2Faves", "Beer", new { beerId = @ViewBag.Match.MatchBeer.Id }, new { @class = "btn btn-success" })
                         </div>
                     </div>

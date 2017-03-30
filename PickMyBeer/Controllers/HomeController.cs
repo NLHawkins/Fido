@@ -176,6 +176,7 @@ namespace PickMyBeer.Controllers
                         match.PrefBeerId = prefBeer.Id;
                         match.TimeStamp = t;
                         match.Score += 10;
+                        db.Matches.Add(match);
                         MList.Add(match);
                     }
                 }
@@ -251,6 +252,7 @@ namespace PickMyBeer.Controllers
                 }
             }
             db.SaveChanges();
+
             
             var List = MList;
             var winner = MList.OrderByDescending(s => s.Score).ToList();
@@ -295,28 +297,50 @@ namespace PickMyBeer.Controllers
                 ViewBag.Prev = true;
             }
 
+            
             var _m = list[match - 1];
+            var topScore = 30 + 15 + 10 + _m.PrefBeer.IngLogs.Count();
+            var firstScore = list[0].Score;
             var pageScore = list[match - 1].Score;
-            var topScore = list[0].Score;
+            //var topScore = list[0].Score;
             double fracScore = (double)pageScore / topScore;
-            var score = fracScore * 100;
+            int score = (int)(fracScore * 100);
+            if(score >= 30)
+            {
+                ViewBag.Medal = "gold";
+            }
+            else if(score < 30 && score >= 10)
+            {
+                ViewBag.Medal = "silver";
+            }
+            else
+            {
+                ViewBag.Medal = "bronze";
+            }
             //var score = (list[match - 1].Score) / (list[0].Score) * 100;
             //ViewBag.Score = list[match - 1].Score;
             ViewBag.Score = score;
-            if (score == 100)
+
+            if (firstScore == pageScore)
             {
                 ViewBag.TopScore = true;
             }
+
             if (_m.MatchBeer.StyleId == _m.PrefBeer.StyleId)
             {
                 ViewBag.StyleM = true;
             }
             var ibuDiff = _m.MatchBeer.IBU - _m.PrefBeer.IBU;
+
             if (ibuDiff >= -15 && ibuDiff <= 15)
             {
                 ViewBag.IBU = true;
             }
 
+            if (_m.PrefBeer.BreweryId == _m.MatchBeer.BreweryId)
+            {
+                ViewBag.BrewMatch = true;
+            }
             ViewBag.T = t;
             ViewBag.BarId = barId;
             ViewBag.Match = list[match - 1];

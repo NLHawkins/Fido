@@ -36,12 +36,12 @@
         });
     }
        
-    var showBeersOnTap = function (beerOnTaps) {
+    var showBeersOnTap = function (beers) {
         var ctrl = $(".beersOnTap")
         ctrl.empty();
-        for (idx in beerOnTaps) {
-            var name = beerOnTaps[idx].Beer.Name;
-            var beerId = beerOnTaps[idx].Beer.Id
+        for (idx in beers) {
+            var name = beers[idx].Name;
+            var beerId = beers[idx].Id
             ctrl.append("<li><a href='http://localhost:54414/Beer/Details?beerId=" + beerId + "'>" + name + "</a> | <button data-beerId =" + beerId + "class='deleteTapBeer'>Remove</button></li>");
         };
     };

@@ -167,8 +167,13 @@ namespace PickMyBeer.Controllers
 
         public ActionResult GetBeersOnTap(int barClientId)
         {
-            var beerOnTaps =  db.BeerOnTaps.Where(b => b.BarClientId == barClientId).ToList().OrderByDescending(c => c.Created);
-            return Json(beerOnTaps, JsonRequestBehavior.AllowGet);
+            var beerOnTaps =  db.BeerOnTaps.Where(b => b.BarClientId == barClientId).OrderByDescending(c => c.Created).ToList();
+            var beers = new List<Beer>();
+            foreach (var item in beerOnTaps)
+            {
+                beers.Add(item.Beer);
+            }
+            return Json(beers, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetBeersInPops()
