@@ -117,7 +117,7 @@
 
             var beerId = beers[idx].id
             var beer = beers[idx]
-                ctrl.append("<tr><td>" + name + "</td><td>" + desc + "</td><td>" + style + "</td><td>" + brewery + "</td><td><button data-bIdx =" + idx + " class='chooseBeer btn btn-primary'>Choose</button></td></tr>");
+                ctrl.append("<tr><td>" + name + "</td><td>" + desc + "</td><td>" + style + "</td><td>" + brewery + "</td><td><button data-bIdx =" + idx + " class='chooseBeer btn btn-primary'>+</button></td></tr>");
 
             
         };

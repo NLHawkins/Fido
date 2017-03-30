@@ -27,6 +27,25 @@ namespace PickMyBeer.Controllers
 
             
         }
+        public ActionResult Sorry()
+        {
+            return View();
+        }
+        public ActionResult Reset()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.SingleOrDefault(s => s.Id == userId);
+            var f = db.FaveBeers.SingleOrDefault(w => w.BeerId == 200);
+            db.FaveBeers.Remove(f);
+            var today = DateTime.Now.Day;
+            var pms = db.SavedMatches.Where(q => q.Match.TimeStamp.Day == today);
+            foreach (var item in pms)
+            {
+                db.SavedMatches.Remove(item);
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index", "AppUser");
+        }
 
         public ActionResult About()
         {
@@ -257,8 +276,10 @@ namespace PickMyBeer.Controllers
             var List = MList;
             var winner = MList.OrderByDescending(s => s.Score).ToList();
             ViewBag.MatchList = winner;
-            ViewBag.Winner = winner[0];
-            ViewBag.Score = winner[0].Score;
+            if (winner.Count == 0)
+            {
+                return RedirectToAction("Sorry");
+            }
             ViewBag.TopScore = true;
             ViewBag.T = t;
             ViewBag.Next = true;

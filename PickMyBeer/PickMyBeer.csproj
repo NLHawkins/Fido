@@ -548,6 +548,7 @@
     <Content Include="Views\BarUser\BarList.cshtml" />
     <Content Include="Views\BarUser\Details.cshtml" />
     <Content Include="Views\BarUser\ReviewMatches.cshtml" />
+    <Content Include="Views\Home\Sorry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
