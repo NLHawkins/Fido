@@ -1,4 +1,5 @@
-<div class=container>
+<div class=container markdown="1">
+---
 <img src="https://cdn.rawgit.com/NLHawkins/PickMyBeer/e1b3f0c1/PickMyBeer/Uploads/FidoLogo.png" style="height: 200px" class="text-center"/>
 
 
