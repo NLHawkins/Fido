@@ -1,4 +1,4 @@
-<img src="https://github.com/NLHawkins/PickMyBeer/blob/master/PickMyBeer/Uploads/FidoLogo.png" style="height: 200px"/>
+<img src="https://cdn.rawgit.com/NLHawkins/PickMyBeer/e1b3f0c1/PickMyBeer/Uploads/FidoLogo.png" style="height: 200px"/>
 
 
 # Fido
@@ -25,7 +25,7 @@ Fido breaks a beer down into the attributes that lend to a beer's desirability.
 
 By weighting these similarities, Fido aggregates an ordered list of matching beers displaying them one side-by-side with the chosen beer for  quick user comparison. A simplified chart of the process is found below as well on the application's About page.
 
-<img src="https://github.com/NLHawkins/PickMyBeer/blob/master/PickMyBeer/Uploads/FidoAlgoFinal.png" style="height: 400px"/>
+<img src="https://cdn.rawgit.com/NLHawkins/PickMyBeer/e1b3f0c1/PickMyBeer/Uploads/FidoAlgoFinal.png" style="height: 400px"/>
 
 
 Fido was built as a capstone project representing a culmination of skills learned during my 12 week immersive course in back-end engineering at The Iron Yard, Greenville, SC.
