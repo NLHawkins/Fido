@@ -1,4 +1,5 @@
-<img src="https://cdn.rawgit.com/NLHawkins/PickMyBeer/e1b3f0c1/PickMyBeer/Uploads/FidoLogo.png" style="height: 200px"/>
+<div class=container>
+<img src="https://cdn.rawgit.com/NLHawkins/PickMyBeer/e1b3f0c1/PickMyBeer/Uploads/FidoLogo.png" style="height: 200px" class="text-center"/>
 
 
 # Fido
@@ -31,3 +32,4 @@ By weighting these similarities, Fido aggregates an ordered list of matching bee
 Fido was built as a capstone project representing a culmination of skills learned during my 12 week immersive course in back-end engineering at The Iron Yard, Greenville, SC.
 
 ***Fido is a work in progress as I will be adding features and refactoring code to make Fido more useful to both drinkers and bars.***
+</div>
